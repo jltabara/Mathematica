@@ -1,0 +1,3863 @@
+ \documentclass[a4paper,10pt, draft]{article}
+%%%%%%%%%%%%%%%%%%%%%%Paquetes
+\usepackage[spanish]{babel}  
+\usepackage{indentfirst} %%%%%%%%%%%%%%%%Crear un indent al principio
+\usepackage[latin1]{inputenc}%%%%%%%%%%%%ñ y acentos
+\usepackage{tcolorbox}
+\usepackage{color}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+
+\usepackage{fouriernc}
+
+
+
+\usepackage[paperwidth=12cm,paperheight=15cm, hmargin={1cm,1cm}, top=1cm, bottom=1cm]{geometry}
+\usepackage{latexsym,amsmath,amssymb,amsfonts}
+
+\newcommand{\com}[1]{\textbf{\color{blue}{#1}}}
+
+\pagestyle{empty}
+
+%\newboxedtheorem[boxcolor=orange, background=blue!5, titlebackground=blue!20,
+%titleboxcolor = black]{ejer}{}{anything}
+\newenvironment{capitulo}{\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]}{\end{tcolorbox}\bigskip}
+\newenvironment{ejer}{\begin{tcolorbox}[center title, title=Ejercicios,
+fonttitle=\sffamily\bfseries,colback=blue!5,colframe=orange]}{\end{tcolorbox}}
+\newenvironment{funciones}{\begin{tcolorbox}[center title, title=Nuevas funciones, fonttitle=\sffamily\bfseries, colback=green!5!white,colframe=red!75!black]}{\end{tcolorbox}\bigskip}
+\setlength{\parskip}{2mm}
+
+\author{jltabara@gmail.com}
+
+\title{Introducción a Mathematica}
+
+\date{}
+
+\begin{document}
+
+\begin{capitulo}
+
+\vspace{-1cm}
+\maketitle
+
+\end{capitulo}
+
+\vspace{-0.5 cm}
+
+\thispagestyle{empty}
+
+\tableofcontents
+
+\newpage
+
+\begin{capitulo}
+
+%\addcontentsline{toc}{subsection}{Operaciones}
+\section{Números enteros y racionales}
+
+\end{capitulo}
+
+
+
+\subsection{Operaciones con números enteros}
+
+Si trabajamos con \textbf{números enteros}, Mathematica nos facilita los \textbf{resultados exactos}, por muy grandes que estos sean. Los operadores para realizar la suma y la resta son los habituales \mbox{(\com{ +,- })}. Para multiplicar se utiliza el asterisco (\com{ * }) (aunque a veces basta la yuxtaposición, o también un simple espacio en blanco). El operador de división es la barra inclinada (\com{ / }). \textbf{En la división, si los números son enteros,} Mathematica entiende que es una fracción y no la transforma en número decimal. Simplemente  nos devuelve el \textbf{resultado simplificado}. Si queremos el resultado decimal en la división, \textbf{escribimos un punto después de alguno de los términos de la división}. Entonces Mathematica entiende que uno de ellos es un número decimal y que lo que queremos es la división con decimales.
+
+\begin{ejer}
+
+Realiza las siguientes operaciones con números enteros:
+ $$
+  a)\,5+8 \qquad  b)\,7-9 \qquad  c)\,56 \times 45 \qquad  d)\,48/ 30
+  $$
+ 
+\end{ejer}
+
+\begin{funciones}
+
+ \textbf{Plus, Subtract, Minus, Times, Divide.}
+
+
+\end{funciones}
+\newpage
+
+
+\subsection{Potencias de exponente entero}
+
+La potencia se calcula con el circunflejo (\com{ \^{} }). Si trabajamos con números enteros el resultado es siempre exacto. Si el \textbf{exponente es negativo} nos devuelve la correspondiente fracción, aplicando la propiedad  $ a^{-n}=\displaystyle \frac{1}{a^n}$.
+
+\begin{ejer}
+
+Realiza las siguientes potencias de enteros:
+ $$
+  a)\,2^3 \qquad  b)\,2^{-6} \qquad c)\,-2^8 \qquad d)\, (-2)^8 \qquad  e)\,2^{525}
+  $$
+ 
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Power.}
+
+
+\end{funciones}
+
+
+\newpage
+
+
+\subsection{Operaciones combinadas}
+
+\textbf{En las operaciones combinadas Mathematica sigue la jerarquía  habitual de las matemáticas}: primero realiza los paréntesis, después las potencias, posteriormente las multiplicaciones y divisiones y finalmente las sumas y las restas. \textbf{No se pueden usar corchetes aunque si se pueden anidar paréntesis}. Cuando tengamos dos paréntesis seguidos (uno que cierra y otro que abre) si no se escribe ninguna operación entre ellos, el programa realiza la multiplicación, del mismo modo que en la notación matemática. Lo mismo si tenemos un número delante de un paréntesis.
+
+
+
+\begin{ejer}
+
+Realiza las siguientes operaciones combinadas:
+$$
+a)\,(4+2) \times 3 \quad b)\,(3+7-6)\times (7-5) \quad c)\,((3+8)\times 3)^2
+$$
+
+\end{ejer}
+
+\newpage
+
+\subsection{Operaciones con números racionales}
+
+Mathematica opera de \textbf{modo exacto con las fracciones},  a no ser que no aparezcan en ellas números decimales, y nos da \textbf{el resultado simplificado}. En cuanto aparece un número decimal, ya nos ofrece el resultado en decimales. 
+
+Si en una operación aparecen varias fracciones y un número decimal, el resultado siempre no los facilita como número decimal. De esta forma podemos obtener el resultado decimal de cualquier operación entre fracciones.
+
+
+\begin{ejer}
+
+Realiza las siguientes operaciones con fracciones:
+
+$$
+a)\,\frac{5}{6}+\frac{3}{4} +1 \qquad b)\,\frac{4}{5}+\left(\frac{78}{33}-\frac{2}{3}\times \frac{5}{3}\right)^4
+$$
+
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{Rational.}
+
+
+\end{funciones}
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Números decimales y radicales}
+
+\end{capitulo}
+
+\subsection{Operaciones con números decimales} 
+ 
+ \textbf{El separador de decimales es el punto}.  Cuando se opera con decimales  el resultado se presenta, en principio, con \textbf{6 cifras significativas}, aunque internamente Mathematica trabaja con más. 
+
+Si el número real es lo \guillemotleft suficientemente\guillemotright\  grande, Mathematica nos lo \textbf{devuelve en notación científica}. Para introducir un número en notación científica podemos escribirlo como  una multiplicación o bien utilizar la  notación (\com{ *\^{} }).
+
+Si queremos transformar un número decimal en racional, utilizamos el comando \com{Rationalize[x]}.
+
+
+\begin{ejer}
+Realiza las siguientes operaciones con  decimales y racionaliza alguno de ellos:
+
+
+\begin{center}
+\begin{tabular}{lll}
+
+
+  $a)\,3.56 + 7.9 $ & $b)\,3.56/ 78.9$ &  $c)\,1.34^5 $\\
+  & & \\
+$ d)\, 4.6^{50} $ & $ f)\,2.4 \times 10^5 -89$ & 
+
+\end{tabular}
+\end{center}
+\end{ejer}
+
+\begin{funciones}
+
+\textbf{Rationalize.}
+
+\end{funciones}
+
+\newpage
+
+
+\subsection{Aproximaciones decimales y constantes}
+
+Si queremos obtener el resultado de una operación con un número determinado de cifras significativas, empleamos la función \com{N[x,n]}. Es importante \textbf{poner corchetes y no paréntesis}, al contrario de la notación matemática. El segundo argumento es opcional e indica el número de cifras significativas del resultado. Si no indicamos este número, en principio Mathematica trabaja con 6 cifras significativas. Si queremos obtener el resultado con las cifras significativas predefinidas por Mathematica, escribimos \com{//N} tras la operación.
+
+Algunas constantes importantes en Matemáticas, ya vienen incorporadas en el lenguaje:
+el número $\pi$ se escribe como \com{Pi}, el número $e$ como \com{E} y el número aureo $\phi$ se denota por \com{GoldenRatio}.
+
+
+\begin{ejer}
+
+
+\begin{itemize}
+
+
+ \item Calcula la división $456789/342$ con distintas cifras significativas.
+
+
+ \item Calcula las constantes con distintas aproximaciones.
+ 
+\item Calcula $e^\pi +\pi^2$.
+
+\end{itemize}
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{N, Pi, E, GoldenRatio.}
+
+
+\end{funciones}
+
+\newpage
+
+
+
+\subsection{Potencias fraccionarias y radicales}
+
+\textbf{Mathematica es capaz de calcular potencias de exponente negativo y fraccionario}. Por lo tanto es capaz de calcular todo tipo de raíces. Para ello debemos tener en cuenta que  $\sqrt[n]{x} = x^{1/n}$. Si las raíces no dan números racionales, no transforma en decimal el número, \textbf{únicamente lo simplifica}. Si queremos obtener una aproximación decimal podemos emplear \com{N[x]}.
+
+Además de la notación de potencias, se pueden calcular raíces de otra forma: la \textbf{raíz cuadrada} se puede calcular con la función \com{Sqrt[x]}, donde es importante escribir la primera letra con mayúscula. La \textbf{raíz cúbica} se calcula con \com{CubeRoot[x]} y en general \textbf{la raíz de orden $n$} con la función \com{Surd[x,n]}, cuyo segundo argumento es el orden de la raíz. \textbf{El resultado, en general, aparece en forma de potencias}.
+
+\begin{ejer}
+
+Calcula de distintos modos los siguientes radicales:
+$$
+ a)\,\sqrt{2}\qquad b)\, \sqrt[3]{2} \qquad c)\,\left(\sqrt[5]{2}\right)^5 \qquad d)\, 
+ \sqrt[3]{2^{11}}
+$$
+
+\end{ejer}
+
+
+
+\begin{funciones}
+
+\textbf{Sqrt, CubeRoot, Surd.}
+
+
+\end{funciones}
+
+\newpage
+
+\subsection{Operaciones con radicales}
+
+
+Es sabido que, en general, \textbf{los radicales son números irracionales}. Operar con ellos de forma exacta requiere conocer ciertas propiedades generales de los radicales. Mathematica puede manejar de manera simbólica los radicales en todo tipo de operaciones aunque algunas veces necesitaremos utilizar el comando \com{Simplify[x]} o el comando \com{Expand[x]}, para \guillemotleft ayudar\guillemotright\  al programa. Estas funciones también se pueden emplear en la forma \com{//Simplify} y \com{//Expand} después de la operación.
+
+
+\begin{ejer}
+
+Realiza las siguientes operaciones con radicales:
+
+\begin{itemize}
+
+
+\item  $a)\,\sqrt{2}\sqrt{3} \qquad b)\,\sqrt[15]{2^5}\qquad c)\, \sqrt{\sqrt[5]{2}}$
+
+
+\item  $\sqrt[6]{2^5} \cdot \sqrt{2^7} \cdot \sqrt[3]{2^2}$
+
+
+\item $\left(3+5\sqrt{7}\right)^3$
+
+
+\item  $ 23\sqrt{125} + 3\sqrt{20}-2\sqrt{45}$
+
+
+\item  $ \displaystyle \frac{5}{2\sqrt{3}-2}$
+
+\end{itemize}
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{Simplify, Expand.}
+
+
+\end{funciones}
+
+
+
+\newpage
+
+\begin{capitulo}
+
+\section{Funciones elementales}
+
+
+\end{capitulo}
+
+Mathematica es lo que en inglés se denomina \textit{case-sensitive}, esto es, que diferencia entre mayúsculas y minúsculas. Por ello no podemos escribir la misma palabra, pero cambiando mayúsculas por minúsculas. Además en Mathematica
+se siguen ciertas convenciones para escribir funciones:
+
+\begin{itemize}
+
+\item Las funciones \textbf{empiezan por mayúscula}. Si el nombre de la funcion se construye uniendo dos o mas palabras, la inicial de cada palabra tambien va en mayúscula.
+
+\item Después de la función se colocan unos \textbf{corchetes} y no unos paréntesis, como es lo habitual en la notación matemática.
+
+\item Los distintos argumentos \textbf{se separan por comas}.
+
+\end{itemize}
+
+\newpage
+
+\subsection{Funciones para \guillemotleft redondear\guillemotright}
+
+Existen distintas funciones de redondeo. Unas redondean al entero más cercano (\com{Round[x]}), otras  por defecto (\com{Floor[x]}) y o\-tras por exceso (\com{Ceiling[x]}). 
+
+Un número decimal tiene una parte entera (\com{IntegerPart[x]}) y de una parte decimal (\com{FractionalPart[x]})
+
+
+\begin{ejer}
+
+Haz distintos redondeos de números positivos y negativos. Calcula su parte entera y decimal.
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{Round, Floor, Ceiling, IntegerPart, FractionalPart.}
+
+
+\end{funciones}
+
+
+
+\newpage
+
+\subsection{Funciones trigonométricas}
+
+Las funciones trigonométricas se calculan por defecto en \textbf{radianes}. Para realizar el cálculo en \textbf{grados}, debemos multiplicar los grados por la constante predefinida \com{Degree}. 
+
+Mathematica siempre nos da el resultado exacto. Como para muchos valores, las funciones trigonométricas producen números con infinitos decimales, el único resultado correcto es dejar la salida igual a la entrada. Ello no quiere decir que Mathematica no sea capaz de realizar el cálculo. Si queremos el resultado con decimales empleamos la función \com{N[x]}.
+
+Las funciones trigonométricas son: \com{Sin[x]}, \com{Cos[x]} y \com{Tan[x]}, aunque también existen funciones para la secante, la cosecante y la cotangente.
+ 
+ 
+ \begin{ejer}
+ 
+Realiza los siguientes cálculos trigonométricos:
+
+
+\begin{itemize}
+
+\item $\displaystyle a)\, \cos\!\left(\frac{\pi}{3}\right)\quad b)\,\sin\!\left(\frac{\pi}{2}\right)\quad  c)\,\tan\!\left(\frac{2\pi}{3}\right) \quad d) \cos(2)$
+
+
+ \item $\displaystyle a)\, \cos\!\left(60^\mathrm{o}\right)\quad  b)\,\sin\!\left(90^\mathrm{o}\right) \quad  \! c)\,\tan\!\left(120^\mathrm{o}\right)  \quad  \! d)\cos(7^\mathrm{o})$
+
+\item $\displaystyle 3\cos\left(\frac{\pi}{3}\right)+7\sin\left(\frac{3\pi}{4}\right)$
+
+\end{itemize}
+
+\end{ejer} 
+
+\enlargethispage{1 cm}
+
+\begin{funciones}
+
+\textbf{Degree, Sin, Cos, Tan.}
+
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Trigonométricas inversas  e hiperbólicas}
+
+Si añadimos el prefijo \com{Arc} al nombre de la función calculamos las funciones inversas y con el sufijo \com{h} calculamos funciones hiperbólicas. El resultado de las funciones trigonométricas inversas viene dado en radianes. Algunas de estas funciones son: \com{ArcSin[x]}, \com{Cosh[x]}, \com{ArcTanh[x]},\dots
+
+\begin{ejer}
+
+Realiza los siguientes cálculos:
+
+\begin{itemize}
+
+\item  $\displaystyle a)\,\mathrm{arccos}\left(\frac{1}{2}\right) \qquad b)\, \arctan(1)\qquad c)\, \arcsin(-1)$
+
+\item $\displaystyle  a)\, \arcsin(0.3) \qquad b)\,  \arcsin\left(\frac{3}{5}\right)\qquad c)\, \arcsin(2)$
+
+\item  $\displaystyle a)\, \sinh(4)\qquad b)\, \cosh(4)\qquad c)\,\tanh(4)$
+
+\end{itemize}
+
+\end{ejer} 
+
+
+
+\begin{funciones}
+
+\textbf{ArcSin, ArcCos, ArcTan, Sinh, Cosh, Tanh, ArcSinh, ArcCosh, ArcTanh.}
+
+
+\end{funciones}
+
+ \newpage
+
+
+\subsection{Exponenciales y logaritmos}
+
+La exponencial se calcula con la función \com{Exp[x]} o también elevando el número \com{E} a la potencia indicada.
+
+El logaritmo \textbf{neperiano o natural} se calcula con \com{Log[x]}. El logaritmo en base 2 con \com{Log2[x]} y en base 10 con \com{Log10[x]}. En general para calcular el logaritmo en cualquier base se emplea la función \com{Log[b,x]}, donde el primer argumento es la base.
+
+
+\begin{ejer}
+
+Realiza los siguientes cálculos:
+
+\begin{itemize}
+
+\item  $a)\,\displaystyle \exp(1) \qquad b)\, \exp(5.2) \qquad c)\, \exp\left(\frac{5}{3}\right)$
+
+
+\item  $\displaystyle  a)\, \ln(e) \qquad b)\,\ln\left(e^5\right) \qquad c)\,\ln\left(\frac{77}{3}\right)$
+
+
+\item $\displaystyle a)\, \log_2(8)\qquad b)\,\log_{2}(\sqrt{8})\qquad c)\, \log_{5}(125^4)$
+
+\end{itemize}
+
+\end{ejer} 
+
+
+
+\begin{funciones}
+
+\textbf{Exp, Log, Log2, Log10.}
+
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Definición de nuevas funciones}
+
+
+Además de las funciones que Mathematica trae predefinidas, nosotros podemos crear nuestras propias funciones. Estas pueden tener varios argumentos. La notación para construirlas se asemeja mucho a la tradicional de las matemáticas, pero con ligeras variaciones:
+
+\begin{itemize}
+
+\item A continuación del nombre de la variable debemos colocar un \textbf{guión bajo}.
+
+\item En vez de un signo igual debemos poner \com{:=} (aunque en funciones sencillas también nos sirve un único signo igual).
+
+\end{itemize}
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Construye la función $f(x)=1+x^2$ y calcula algunos valores.
+
+\item Construye la función $g(x,y)=2x+3y$ y calcula algunos valores.
+
+\end{itemize}
+
+\end{ejer} 
+
+ \newpage
+
+\subsection{Funciones aplicadas a varios valores}
+
+Si queremos aplicar una función a varios valores a la vez, debemos colocar los valores en lo que Mathematica denomina una \textbf{lista}. Para ello colocamos los valores \textbf{entre llaves} y \textbf{separados por comas}. Después le pasamos la lista como argumento a la función. La lista puede contener números, expresiones, variables,\dots
+
+Este procedimiento se denomina \textbf{vectorización} en términos informáticos y permite realizar programas mucho más eficientes.
+
+\begin{ejer}
+
+Crea una lista con varios valores y aplica alguna de las funciones a la lista.
+
+\end{ejer}  
+
+
+\newpage
+
+\begin{capitulo}
+
+\section{Divisibilidad}
+
+\end{capitulo}
+
+
+
+\subsection{División con resto}
+
+Para obtener el cociente de una división con resto  se utiliza la función \com{Quotient[x,y]} y para obtener el resto tenemos la función \com{Mod[x,y]}. Si queremos obtener los dos resultados a la vez, empleamos la función \com{QuotientRemainder[x,y]}. Esta función nos devuelve una lista, siendo la primera componente el cociente y la segunda el resto.
+
+
+\begin{ejer}
+
+Realiza las siguientes divisiones enteras:
+ $$
+ a)\,7 / 4 \qquad \qquad b)\,89 /33\qquad \qquad  c)\,(-5) / 4
+ $$
+ 
+ \end{ejer}  
+ 
+ 
+\begin{funciones}
+
+\textbf{Quotient, Mod, QuotientRemainder.}
+
+
+\end{funciones}
+ 
+ 
+ \newpage
+ 
+ \subsection{Números primos}
+
+Para saber si un número es primo utilizamos la función \com{PrimeQ[x]}. Si nos devuelve \textit{True}, el número es primo. Si nos devuelve \textit{False} entonces es compuesto.
+
+Para obtener el primo $n$-ésimo se utiliza la función \com{Prime[n]}. Dado un número cualquiera, para saber cual es el número siguiente número primo a partir de él, se utiliza la función \com{NextPrime[x,n]}. Manejando el segundo argumento, podemos calcular también el primo anterior.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Comprueba si son primos o compuestos los siguientes números:
+$$ a)\, 7 \qquad b)\,1000 \qquad c)\,4323 \qquad d)\, 2^{32}+1$$
+
+\item Calcula el primer número primo y el situado en la posición 168.
+
+\item  Calcula el primer primo que sigue al número 1000. Calcula también el anterior.
+
+\item Intenta encontrar, mediante ensayo y error, la cantidad de números primos que son menores que 5000.
+
+\item Hacer el ejercicio anterior con la función \com{PrimePi[x]}.
+
+\end{itemize}
+
+\end{ejer} 
+\enlargethispage{1 cm}
+
+\begin{funciones}
+
+\textbf{PrimeQ, Prime, NextPrime, PrimePi.}
+
+
+\end{funciones}
+
+
+ \newpage
+
+\subsection{Factorización}
+
+Para obtener la descomposición en números primos se utiliza la función \com{FactorInteger[n]}. La salida es una lista de lista. El primer elemento de la sublista es el factor y el segundo el exponente. También puede factorizar números negativos y fracciones. En el caso de la fracciones los factores del denominador aparecen con exponente negativo. Además se eliminan los factores repetidos (se factoriza la fracción irreducible).
+
+\begin{ejer}
+
+Factoriza los siguientes números:
+$$
+a)\, 260 \qquad b)\,-260\qquad c)\, \frac{260}{34} \qquad d)\, 45!
+$$ 
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{FactorInteger, Factorial.}
+
+
+\end{funciones}
+
+
+ \newpage
+
+\subsection{Divisores, mcd y mcm}
+
+\com{Divisors[n]} nos devuelve el conjunto de divisores del número en cuestión. Para obtener el máximo común divisor de cualquier cantidad de números se utiliza el comando \com{GCD[n,m, \dots]}. Para el mínimo común múltiplo el comando  es \com{LCM[n,m, \dots]}. 
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Calcula los divisores de $23$ y de $60$.
+
+
+\item Calcula el \textit{mcd} y el \textit{mcm} de 612 y 5292.
+
+
+\item Calcula lo mismo para 612, 5292 y 48.
+
+
+\end{itemize}
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{Divisors, GCD, LCM.}
+
+
+\end{funciones}
+
+
+
+\newpage
+
+\begin{capitulo}
+
+
+\section{Polinomios}
+
+
+\end{capitulo}
+
+\subsection{Operaciones}
+
+Los operadores para realizar las operaciones con los polinomios son los habituales.
+Cuando le pedimos a Mathematica que realice una operación con polinomios, en principio no la realiza. Para desarrollar la expresión empleamos el comando \com{Expand[p]}. Se puede trabajar con polinomios en \textbf{cualquier número de variables}, aunque casi todo lo aplicaremos  a polinomios en una variable.
+
+\begin{ejer}
+
+Realiza las siguientes operaciones con polinomios:
+
+\begin{itemize}
+
+\item  $x^3+(3x^2+7)(4x-1)+(2x-3)^4$
+
+
+\item $(4x^2+5)^2$
+
+
+\item $(x+y)^3$
+
+\end{itemize}
+
+\end{ejer}  
+
+
+
+\begin{funciones}
+
+\textbf{Expand.}
+
+
+\end{funciones}
+
+
+\newpage
+
+\subsection{División con resto}
+
+Para realizar la división con resto de dos polinomios tenemos a nuestra disposición distintos comandos, similares a los que hemos visto para números enteros. Todos ellos llevan el prefijo \com{Polynomial} y además como segundo argumento debemos indicar la variable del polinomio. Para calcular el cociente tenemos \com{PolynomialQuotient[p,q,x]}, y para el resto, \com{PolynomialRemainder[p,q,x]}. Para calcular ambos a la vez el comando \com{Polynomial\-Quotient\-Remainder[p,q,x]}.
+
+\begin{ejer}
+
+Realiza la siguiente división de polinomios, comprobando el resultado:
+ $$
+ (x^3+5x^2-3x+2):(4x-3)
+ $$
+ 
+ \end{ejer} 
+ 
+
+\begin{funciones}
+
+\textbf{PolynomialQuotient, PolynomialRemainder, PolynomialQuotientRemainder .}
+
+
+\end{funciones} 
+ 
+  \newpage
+ 
+ \subsection{Factorización}
+
+El comando para factorizar polinomios es \com{Factor[p]}. Si no le aña\-dimos ninguna opción, \textbf{factoriza los polinomios en el cuerpo de los racionales} (si las raíces son números irracionales o complejos no factoriza el polinomio). Si ponemos algún coeficiente como número decimal, factoriza, en el cuerpo real, con raíces aproximadas. Para conseguir que factorice en el cuerpo complejo tenemos que poner la opción \com{GaussianIntegers} en \textit{True}.
+
+
+\begin{ejer}
+
+Factoriza los siguientes polinomios y comprueba el resultado:
+
+
+\begin{itemize}
+\item $p= x^4-x^3-7x^2+13x-6 $
+
+\item $ q= x^3-5x^2+8x-4$
+
+\item $  x^3+x^2-2x-2$
+
+\item $x^3+3x^2+x+3$
+
+\end{itemize}
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Factor, GaussianIntegers.}
+
+
+\end{funciones}
+
+
+\newpage
+
+\subsection{Mcd y mcm}
+
+Para calcular el \textit{mcd} y el \textit{mcm} con polinomios utilizamos \com{PolynomialGCD[p,q,\dots]} y \com{PolynomialLCM[p,q,\dots]}.
+
+
+\begin{ejer}
+
+Calcula el máximo común denominador y el mínimo común múltiplo de los polinomios $p$ y $q$ anteriores.
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{PolynomialGCD, PolynomialLCM.}
+
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Sustitución de variables}
+
+Para sustituir letras en el polinomio, utilizamos  \com{/.}, escribiendo a continuación la sustitución, empleando un guión y el signo $>$, que se transformarán en una flecha. Esto es lo que en Mathematica se denomina una \textbf{regla}. Si queremos hacer varias sustituciones tenemos que poner las reglas en una lista. 
+
+Otro método consiste en transformar el polinomio en una función.
+
+\begin{ejer}
+
+Calcula el valor de $p(x)$ cuando $x$ es 5 y cuando $x$ es 1. Sustituye $x$ por $y^2-1$.
+
+\end{ejer}  
+
+
+
+
+\newpage
+
+
+\subsection{Raíces de polinomios}
+
+Para obtener las raíces utilizamos \com{Roots[p==0,x]}. El polinomio debe estar igualado a cero (\textbf{se debe emplear un doble igual}), y como segundo argumento tenemos que escribir la variable. La solución, si es posible, es facilitada en forma exacta y con su multiplicidad. El comando encuentra tanto las raíces reales como las complejas.
+
+Muchas veces tanta exactitud es contraproducente. En ese caso se puede utilizar \com{NRoots[p==0,x]}, que hace lo mismo, pero da la soluciones numéricas. La opción \com{PrecisionGoal} nos permite fijar el número de cifras de la solución.
+
+\begin{ejer}
+
+Encuentra las raíces, exactas o aproximadas, de los polinomios:
+
+\begin{itemize}
+
+\item  $p= x^4-x^3-7x^2+13x-6$
+
+
+\item  $x^3-5x^2+3x+2$
+
+
+\item $4x^3 +3x^2+2x+1$
+
+\end{itemize}
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Roots, NRoots, PrecisionGoal.}
+
+
+\end{funciones}
+
+\newpage
+
+\subsection{Polinomio interpolador de Lagrange}
+
+Fijados $n$ puntos del plano, de tal forma que ningun par de ellos tenga la misma coordenada $x$ (no puede estar un punto \guillemotleft encima\guillemotright\ de otro), existe un polinomio de grado menor o igual que $n$ que pasa por todos los puntos. Si los puntos estan en \guillemotleft posi\-ción general\guillemotright\ el polinomio es de grado $n$. En particular, por dos puntos, pasa una recta, por tres puntos una parábola, \dots
+
+El comando para obtener el polinomio es \com{InterpolatingPolynomial[lista,x]}. La lista debe ser el conjunto de puntos por el que queremos que pase. Como segundo argumento escribimos la letra que queremos para el polinomio.
+
+\begin{ejer}
+
+Encontrar el polinomio interpolador, comprobando  analí\-ticamente que pasa por los puntos:
+
+
+\begin{itemize}
+
+\item Recta que pasa por $(3,4)$ y $(6,8)$.
+
+\item Parábola que pasa por $(3,6)$, $(2,7)$ y $(4,7)$.
+
+\item Polinomio por los puntos $(2,3)$, $(3,4)$ y $(4,5)$.
+
+\end{itemize}
+
+
+\end{ejer} 
+
+
+
+\begin{funciones}
+
+\textbf{InterpolatingPolynomial.}
+
+
+\end{funciones} 
+
+\newpage
+
+
+\subsection{Números algebraicos y polinomio mínimo}
+
+\textbf{Un número real o complejo $a$ es un número algebraico si existe un polinomio $p(x)$ con coeficientes  enteros tal que $a$ es  una raíz del polinomio}. Si el número es algebraico, existen muchos polinomios que cumplen la condición. Pero existe un único polinomio de grado mínimo que lo cumple: este es el denominado polinomio mínimo del número $a$. Para conseguir el polinomio mínimo de $a$ escribimos \com{MinimalPolynomial[a,x]}.
+
+Para saber si un número es algebraico utilizamos el comando \com{Element[a, Algebraics]}. 
+
+\begin{ejer}
+
+Calcula los polinomios mínimos, comprobando si son algebraicos, los siguientes números. Comprueba que efectivamente los números son raíces del polinomio mínimo:
+$$
+a)\, 3/2 \qquad b)\, \sqrt{3} \qquad c)\, \sqrt[3]{5}+8\sqrt{3}\qquad d)\, \pi (?)
+$$
+
+\end{ejer}
+
+
+
+
+\begin{funciones}
+
+\textbf{MinimalPolynomial, Element, Algebraics.}
+
+\end{funciones}
+
+
+
+
+
+
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Fracciones algebraicas}
+
+
+\end{capitulo}
+
+\subsection{Simplificación}
+
+\textbf{Los cocientes de polinomios son las fracciones algebraicas}. Si queremos simplificar una fracción podemos \textbf{descomponer en factores} tanto el numerador como el denominador y \guillemotleft tachar\guillemotright\ los factores repetidos. Otro método para simplificar consiste en dividir tanto el numerador como el denominador \textbf{entre el máximo común divisor de ambos polinomios}. Mathematica simplifica las fracciones con el comando  \com{Cancel[p]} o también \com{Simplify[p]}.
+
+Para acceder al numerador de una fracción tenemos \com{Numerator[p]} y para el denominador \com{Denominator[p]}.
+
+\begin{ejer}
+
+Simplifica las siguientes fracciones algebraicas:
+$$ 
+a)\,\frac{x^2-5x+6}{x-2} \qquad \qquad b)\,\frac{x^2-5x+6}{x^2-6x+8}
+$$
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Cancel, Numerator, Denominator.}
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Desarrollar fracciones}
+
+El comando \com{Expand[p]} que nos servía para polinomios sigue funcionando con fracciones algebraicas. Sin  embargo es probable que el resultado que nos devuelve no sea del agrado de los ojos de un matemático, a pesar de ser correcto. 
+
+En una fracción podemos desarrollar el numerador, el denominador o ambas partes. Los comandos son \com{ExpandNumerator[p]}, \com{ExpandDenominator[p]} y \com{ExpandAll[p]}.
+
+\begin{ejer}
+
+Desarrolla de distintos modos la  fracción algebraica:
+$$
+\frac{3x+(x+4)^3}{(1+2x)^2}
+$$
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{ExpandNumerator, ExpandDenominator, ExpandAll.}
+
+
+\end{funciones}
+
+
+
+\newpage
+
+\subsection{Operaciones}
+
+Si intentamos realizar operaciones con fracciones algebraicas, Mathematica nos da un resultado correcto, pero no se parece a lo que estamos acostumbrados en matemáticas. Si queremos obtener el resultado como una única fracción empleamos el comando \com{Together[p]}.
+
+\begin{ejer}
+
+Realiza la siguiente operación con fracciones algebraicas:
+$$
+\frac{3+x}{2x+5} + \frac{5+x^2}{x^2+1} \cdot \frac{3}{x^2-2x+2}
+$$
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Together.}
+
+
+\end{funciones}
+
+
+
+
+
+\newpage
+
+\subsection{Factorización}
+
+Con \com{Factor[p]} también podemos factorizar fracciones algebraicas. Si algún factor está repetido se elimina tanto en el numerador como en el denominador.
+
+\begin{ejer}
+
+Factoriza las fracciones algebraicas:
+$$
+a)\, \frac{x^2-1}{x^2-4} \qquad \qquad b)\, \frac{x^2-1}{x^2+2x+1}
+$$
+
+\end{ejer} 
+
+ \newpage
+
+
+\subsection{Descomposición en fracciones simples}
+
+Una fracción simple tiene en el denominador un polinomio de grado uno elevado a una potencia o bien un polinomio de segundo grado, irreducible, y que puede estar elevado a cualquier potencia. El numerador puede ser una constante o un polinomio de segundo grado si en denominador existe (una potencia) un  polinomio 
+de segundo grado irreducible. Es conocido que \textbf{cualquier fracción algebraica se puede escribir como la suma de un polinomio y una serie de fracciones simples}. Esta descomposición es única. El comando que nos facilita la descomposición en fracciones simples es \com{Apart[p]}.
+
+\begin{ejer}
+
+Descomponer en fracciones simples:
+
+$$
+a)\, \frac{7x+3}{x^2+3x-4} \qquad b)\, \frac{2x^2-x+4}{x^3+4x}
+$$
+
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{Apart.}
+
+\end{funciones}
+
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Ecuaciones y sistemas}
+
+
+\end{capitulo}
+
+\begin{itemize}
+
+\item \textbf{En Mathematica el signo igual de las ecuaciones se escribe con dos signos iguales.}
+
+\item \textbf{Los sistemas de ecuaciones se escriben entre llaves y separados por comas.}
+
+
+
+\end{itemize}
+
+
+
+\newpage
+
+\subsection{Los comandos   fundamentales}
+
+
+El principal comando  para resolver ecuaciones de modo exacto es \com{Solve[p==q,x]}.  Si los números no tienen decimales, el programa intenta devolver el resultado exacto. \textbf{Si algún número es decimal, nos da la solución en formato decimal}. 
+
+\textbf{Para transformar las soluciones en una lista utilizamos las reglas de sustitución}.
+ 
+ A veces la solución exacta no nos es de mucha utilidad, pues puede contener gran cantidad de radicales. Si queremos la solución decimal utilizamos el comando
+  \com{NSolve[p==q,x]}. Con la opción \com{WorkingPrecision} podemos fijar el número de cifras significativas de las soluciones (también lo podemos poner como tercer argumento). 
+  
+  El comando \com{Reduce[p==q,x]} se utiliza del mismo modo, pero a veces puede ser más útil que el comando \com{Solve}.
+  
+
+  
+\begin{ejer}
+
+Resuelve las siguientes ecuaciones de primer grado:
+
+
+\begin{itemize}
+
+\item  $3x+6=0$
+
+
+\item  $\displaystyle \frac{3-x}{3}+\frac{4x-1}{7} = 4$
+
+
+\item  $ax+b=0$
+
+\end{itemize}
+
+\end{ejer}  
+
+\enlargethispage{1 cm}
+
+\begin{funciones}
+
+\textbf{Solve, NSolve, Reduce, WorkingPrecision.}
+
+\end{funciones}
+
+\newpage
+
+\subsection{Ecuaciones algebraicas}
+
+Una ecuación es algebraica, si se puede reducir a \textbf{resolver un polinomio igualado a cero}. Desde el Renacimiento se conocen fórmulas exactas que nos permiten resolver \textbf{cualquier ecuación de grado igual o menor a cuatro}. Pero desde los trabajos de Abel, Ruffini y Galois sabemos que, en general, a partir del quinto grado no existen fórmulas semejantes para su resolución. Debido a ello, Mathematica  no puede resolver de modo exacto dichas ecuaciones.
+
+ Mathematica calcula soluciones reales y complejas. Si la ecuación tiene alguna solución múltiple, aparecen las soluciones repetidas
+
+
+\begin{ejer}
+
+Resuelve las siguientes ecuaciones:
+
+\begin{itemize}
+
+\item  $x^2-5x+6=0$ (dos soluciones reales)
+
+
+\item  $x^2+2x+1=0$ (una solución doble)
+
+
+\item $x^2-4x+5=0$ (soluciones complejas conjugadas)
+
+
+\item  $ax^2+bx+c=0$
+
+\item $x^5-6x^4+10x^3-10x^2+9x-4=0$
+
+\item $x^5+x^4+x^3+x^2+x+4=0$
+
+\end{itemize}
+
+\end{ejer}  
+
+\newpage
+
+\subsection{Sistemas con  nº variables = nº ecuaciones}
+
+Los sistemas más elementales tienen el \textbf{mismo número de ecuaciones que de incógnitas}.  Mathematica puede resolver sistemas lineales y saber si son \textbf{compatibles} o \textbf{incompatibles}. Si el sistema es \textbf{indeterminado} también nos da el conjunto de soluciones. Además puede resolver sistemas no lineales de cualquier dimensión. También podemos utilizar \com{NSolve} para obtener las soluciones aproximadas.
+
+Si el número de variables es igual al número de ecuaciones, podemos omitir el segundo argumento y no escribir las variables.
+
+
+
+\begin{ejer}
+
+Resuelve los sistemas, de modo exacto y aproximado:
+
+\begin{itemize}
+
+\item  $\displaystyle
+\begin{cases}
+3x+7y=9\\
+-5x+9y=5
+\end{cases}$ (una única solución)
+
+\item  $\displaystyle
+\begin{cases}
+x+y=0\\
+x+y=1
+\end{cases}$ (sin solución)
+
+
+\item  $\displaystyle
+\begin{cases}
+x+y=9\\
+2x+2y=18
+\end{cases}$ (infinitas soluciones)
+
+\item $\displaystyle
+\begin{cases}
+x^2-46x=8\\
+-6x+7y=-3
+\end{cases}
+$ (sistema no lineal)
+
+\end{itemize}
+
+\end{ejer}  \newpage
+
+\subsection{Sistemas con más incógnitas que ecuaciones}
+
+
+En este caso, como tenemos más letras que ecuaciones, debemos indicarle a Mathematica que letras son las que queremos resolver. Si no le decimos nada, Mathematica toma esa decisión por nosotros.
+
+\begin{ejer}
+
+Resuelve  para distintas incógnitas
+
+$$
+\begin{cases}
+6x+9y-3z=8\\
+3x-8y+9z=7
+\end{cases}
+$$
+
+
+\end{ejer}  \newpage
+
+
+
+
+
+
+
+\subsection{Otros tipos de ecuaciones algebraicas}
+
+Algunas ecuaciones, en principio, no parecen ecuaciones algebraicas, pues  en ellas aparecen radicales, fracciones algebraicas, \dots  Sin embargo, en algunos casos, se pueden transformar  en ecuaciones algebraicas \guillemotleft casi\guillemotright\  equivalentes. Lo de casi equivalentes significa que con esos procedimientos pueden aparecer soluciones de la ecuación algebraica que no son soluciones de la ecuación de partida. Las mas simples son las ecuaciones con radicales cuadráticos. Si dejamos sola una raíz y elevamos al cuadrado, vamos eliminando uno a uno todos los radicales. También entran en este bombo las ecuaciones con fracciones algebraicas: mediante operaciones algebraicas se reduce a una única fracción algebraica y después se \guillemotleft resuelve el numerador\guillemotright.
+
+
+
+
+
+\begin{ejer}
+
+Resuelve:
+
+\begin{itemize}
+
+\item $1+ \sqrt{3x+4}=x+1$
+
+
+\item $\displaystyle \frac{6}{x^2-1}-\frac{2}{x-1}= 2 -\frac{x+4}{x-1}$
+
+\end{itemize}
+
+\end{ejer}  \newpage
+
+\subsection{Ecuaciones no algebraicas}
+
+La mayor parte de las ecuaciones no algebraicas (transcendentes) \textbf{no se pueden resolver por métodos exactos}. Para resolver dichas ecuaciones  se emplean métodos numéricos. En general, los métodos numéricos no encuentran todas las soluciones, sino que tenemos que darle una \guillemotleft semilla\guillemotright\ y el método encontrará una solución próxima a la semilla. 
+
+
+
+ El comando para resolver sistemas por métodos numéricos es \com{FindRoot[p==q,\{x,s\}]}. Además de la ecuación y la variable, debemos proporcionarle una semilla. Tanto la variable como la semilla van en el segundo argumento en forma de lista.
+Con la opción  de  \com{WorkingPrecision} tendremos mayor precisión. Este comando se puede utilizar también para sistemas, pero ahora debemos fijar una semilla para cada variable.
+
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Resuelve las ecuaciones con distintas semillas.
+
+$$
+a)\, x^2-1=0 \qquad b)\, \cos(x^2)-6x= \tan(x)
+$$
+
+\item Resuelve el sistema con semillas $x=1$, $y=2$.
+$$
+\begin{cases}
+y =\exp(x)\\
+x + y = 2
+\end{cases}
+$$
+
+\end{itemize}
+
+
+
+\end{ejer} 
+
+\enlargethispage{1 cm}
+
+\begin{funciones}
+
+\textbf{FindRoot.}
+
+\end{funciones}
+
+
+ \newpage
+
+
+\subsection{Inecuaciones}
+
+El comando   \com{Reduce[p,x]} se puede utilizar para ecuaciones en lugar del comando \textbf{Solve}. Sin embargo el comando \textbf{Solve} no se puede utilizar para inecuaciones, que se resuelven con \textbf{Reduce}. El resultado de la inecuación  aperece escrito como una expresión boolena, que debemos traducir al lenguaje de los intervalos.
+
+
+Le expresión boolena está escrita en el lenguaje de Mathematica. Con el comando \com{TraditionalForm} podemos escribirla en un lenguaje más matemático.
+
+
+\begin{ejer}
+
+Resuelve las inecuaciones:
+
+\begin{itemize}
+
+
+\item  $4x-5>9$
+
+
+\item $x^2-5x+6 \geq 0$
+
+
+\item $\displaystyle\frac{x^2-5x+6}{x^2-6x+8} \geq 0$
+
+\end{itemize}
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{TraditionalForm.}
+
+\end{funciones}
+
+
+ \newpage
+
+
+\subsection{El método de sustitución}
+
+Uno de los primeros métodos que se estudian para resolver sistemas es el método de sustitución. Si tenemos dos ecuaciones, despejamos una letra en una de las ecuaciones y sustituimos en la otra. En Mathematica podemos hacer esto con el comando \com{Eliminate[p==q,x]}. Le facilitamos el sistema y la letra que queremos eliminar.
+
+Cada vez que eliminamos una letra se elimina una ecuación. Podemos eliminar varias letras a la vez, situando la lista de ellas como segundo argumento.
+
+\begin{ejer}
+
+Eliminar cada una de las letras en el sistema:
+
+$$
+\begin{cases}
+3x+7y=9\\
+-5x+9y=5
+\end{cases}
+$$
+
+\end{ejer}  
+
+\begin{funciones}
+
+
+\textbf{Eliminate.}
+
+\end{funciones}
+
+
+\newpage
+
+\begin{capitulo}
+
+\section{Números complejos}
+
+
+\end{capitulo}
+
+
+
+\subsection{La unidad imaginaria}
+La unidad imaginaria se denota por \com{I} (mayúscula). Para introducir un número complejo lo hacemos en la forma binómica \textbf{a+b*I} o bien empleando la función \com{Complex[a,b]}. Muchas veces podemos suprimir el asterisco que separa al número de la unidad imaginaria. En la salida, la unidad imaginaria se escribe en minúscula y con una tipografía especial.
+
+  \begin{ejer}
+    \begin{itemize}
+    
+    \item Calcula la raíz cuadrada de -1. 
+    
+    \item Resuelve la ecuación $x^2+1=0$. 
+    
+    \item Calcula distintas potencias de la unidad imaginaria.
+    
+    \end{itemize}
+    
+  \end{ejer}  
+  
+\begin{funciones}
+
+\textbf{I , Complex.}
+
+\end{funciones}  
+  
+  
+  \newpage
+  
+  
+  \subsection{Operaciones}
+  
+  
+ Las operaciones algebraicas se realizan con los operadores de siempre.
+ 
+  Para calcular el módulo de un número complejo empleamos \com{Abs[z]}, para obtener el argumento (en radianes) \com{Arg[z]}, para el conjugado \com{Conjugate[z]}, y para las partes real e imaginaria \com{Re[z]}  e \com{Im[z]}. 
+  
+    \begin{ejer}
+    
+    \begin{itemize}
+    
+    
+ \item Dados los números complejos $z=3+5i$ y $w=3-2i$, calcula su suma, su resta, multiplicación, división, inverso y potencias.
+  
+\item Calcula el módulo, el argumento, el conjugado, la parte real e imaginaria de $w$.
+  
+  \end{itemize}
+  
+  \end{ejer}  
+  
+\begin{funciones}
+
+\textbf{Abs, Arg, Conjugate, Re, Im.}
+
+\end{funciones}  
+  
+  
+  \newpage
+  
+  
+  \subsection{Forma polar}
+  
+  Si un número complejo $z$ tiene módulo $m$ y argumento $\theta$ (en radianes), entonces, \textbf{según la fórmula de Euler}, el número se puede escribir como $z = m\cdot \exp(i\theta)$. También se puede escribir como $z= m\cos(\theta) + i m\sin(\theta)$.
+  
+  Si tenemos un número complejo en forma polar y lo queremos en forma binómica, utilizamos la función \com{ComplexExpand}.
+  
+\begin{ejer}
+
+
+
+Utilizando la fórmula de Euler, construye el número complejo $5_{30^0}$ y calcula el conjugado, la parte real, la imaginaria y el módulo.
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{ComplexExpand.}
+
+\end{funciones}
+
+
+\newpage  
+
+\subsection{Funciones con argumento complejo}
+
+Un número entero $z$ tiene siempre $n$ raíces de orden $n$. Para encontrar todas las raíces de dicho orden debemos resolver la ecuación $x^n-z=0$. Si nosotros elevamos el número $z$ a la potencia $1/n$ \textbf{únicamente obtenemos una de las posibles raíces}.
+
+
+
+Muchas de las funciones elementales se pueden aplicar sobre argumentos complejos. En general dichas funciones son multivaluadas (en realidad dan lugar a superficies de Riemann) y Mathematica generalmente nos devuelve un único valor.
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Calcula distintas raíces del número $3+5i$.
+
+\item Calcular la raíz cúbica de $-8$.
+
+\item Realiza los siguientes cálculos, dando el resultado en forma binómica:
+$$
+a)\,e^{\pi i} \quad b)\,\log(4+5i)\quad c)\, \arcsin(3)\quad d)\,\exp(ix)
+$$
+
+\end{itemize}
+
+\end{ejer} 
+
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Gráficas de funciones}
+
+\end{capitulo}
+
+\subsection{Gráfica de una o más funciones}
+
+Para  dibujar funciones usamos \com {Plot[f[x],\{x,min,max\}]}. Debemos escribir una función con una única variable, y en una lista debemos dar la variable, el valor mínimo y el valor máximo del eje horizontal.  El tamaño del eje vertical se adapta a la función que estemos dibujando.
+
+Para dibujar \textbf{más de una gráfica en los mismos ejes}, debemos utilizar la misma variable para las dos funciones y escribirla como primer argumento en una lista.
+
+Las gráficas se pueden \textbf{redimensionar y guardar en  multitud de formatos}, utilizando el botón derecho del ratón.
+
+\begin{ejer}
+
+Dibujar la siguientes funciones individualmente, variando el dominio. Dibujar ambas funciones en los mismos ejes:
+$$
+f(x)=\sin(x) \qquad \qquad g(x)=x^2-3x
+$$
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{Plot.}
+
+
+\end{funciones}
+
+
+ \newpage
+
+\subsection{Algunas opciones interesantes}
+
+
+El comando \com{Plot} tiene una gran cantidad de opciones (se pueden ver todas con el comando \com{Options[f]}) que nos permiten variar muchos detalles del gráfico. Entre las más interesantes están:
+
+\begin{itemize}
+
+\item \com{AspectRatio}. Varia la proporción entre la altura y la anchura. Por defecto dibuja gráficas con la relación aurea. Si ponemos \com{Automatic} las escalas de ambos ejes se igualan.
+
+\item \com{PlotRange}. En una lista escribimos el valor mínimo y máximo del eje vertical.
+
+\item \com{PlotStyle}. Puede modificar muchos aspectos de la gráfica, en particular su color. Debemos emplear nombres de colores en inglés. 
+
+
+\end{itemize}
+
+\begin{ejer}
+
+Dibujar la función $x^2$ en el intervalo $(-3,3)$ y variar las opciones anteriores.
+
+
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Options, AspectRatio, PlotRange, PlotStyle.}
+
+\end{funciones}
+
+
+
+
+\newpage
+
+
+\subsection{El comando \com{Show}}
+
+El comando \com{Show[a]} permite mostrar varios objetos gráficos en unos mismos ejes. En particular esto nos puede servir para dibujar varias gráficas de funciones, cada una en un dominio determinado. Ellos nos permite dibujar funciones definidas a trozos de una manera muy sencilla. Necesitamos la opción \com{PlotRange} en \com{All} para que se vean todas las gráficas.
+
+Mejor que esto es definir directamente una función definida a trozos, con el comando \com{Piecewise[lista]}. Al utilizar \com{Piecewise} si algún punto del dominio queda sin definición, se le asigna el valor cero.
+
+\begin{ejer}
+
+Dibujar la función definida a trozos, utilizando el comando \com{Show} y también con el comando \com{Piecewise}:
+$$
+f(x)=
+\begin{cases}
+x^2 & \textrm{ si } -2<x\leq 0\\
+\sin(x) & \textrm{ si  } \quad 0<x<2
+\end{cases}
+$$
+
+
+
+\end{ejer}
+
+
+
+\begin{funciones}
+
+\textbf{Show, Piecewise.}
+
+\end{funciones}
+
+
+
+\newpage
+
+\subsection{Gráficos de funciones implícitas}
+
+
+Para dibujar funciones implícitas empleamos
+\begin{center}
+\com{ContourPlot[p==q,\{x,xmin,xmax\},\{y,ymin,ymax\}]}
+\end{center}
+El primer argumento es una ecuación en las variables $x$ e $y$ y el segundo y tercer argumento indican el \guillemotleft trozo\guillemotright\ de plano en el que dibujamos la función.
+
+Puede ser necesario tener las opciones \com{Axes->True} y también \com{AspectRatio->Automatic} para que no se deforme la gráfica.
+
+
+\begin{ejer}
+
+Realiza los gráficos de las siguientes funciones implícitas:
+
+\begin{itemize}
+
+\item $2x+y=3$ (una recta)
+
+\item $x^2+y^2=1$ (una circunferencia)
+
+\item $x^2+3y^2=1$ (una elipse)
+
+\item $y^2=x^3-x$ (curva elíptica)
+
+\end{itemize}
+
+
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{ContourPlot, Axes.}
+
+\end{funciones}
+
+
+
+\newpage
+
+
+
+
+
+\begin{capitulo}
+
+\section{Límites}
+
+
+\end{capitulo}
+
+\subsection{Noción intuitiva de límite}
+
+Para calcular límites se utiliza la función \com{Limit[f,$x\rightarrow x_0$]}. Esta función puede admitir 3 argumentos, siendo el último opcional. El primer argumento debe ser la función a la que le queremos calcular el límite. En el segundo escribimos la variable  y una flecha (guión y signo $>$) dirigida al punto. En el tercero podemos utilizar \com{Direction}: si apunta al $1$ entonces el límite se calcula por la izquierda y si apunta a $-1$ lo calcula por la derecha. Debemos tener en cuenta que Mathematica siempre calcula, por defecto, límites por la derecha, así que algún límite puede no existir, por no coincidir con el límite por la izquierda.  El símbolo $\infty$ se escribe \com{Infinity}.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Consideremos la función $f(x)=\displaystyle \frac{\sin(x)}{x}$. Calcula valores de la función para elementos próximos a cero, dibuja la función en un entorno del cero y calcula el límite. 
+
+\item Haz lo mismo con la función $f(x)=\displaystyle \frac{|x|}{x}$.
+
+\end{itemize}
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Limit, Direction, Infinity.}
+
+\end{funciones}
+
+ \newpage
+
+
+\subsection{Indeterminaciones}
+ 
+ Mathematica calcula límites en cualquier punto. En particular es capaz de resolver muchos tipos de indeterminaciones.
+ 
+ \begin{ejer}
+
+ 
+Resuelve las siguientes indeterminaciones:
+\begin{eqnarray*}
+\lim_{x\rightarrow 2}\left(\frac{x^2-5x+6}{x^2-6x+8}\right) &\leadsto & (\mathrm{ tipo }\quad \infty/\infty) \\
+ \lim_{n\rightarrow \infty} \left(1+\frac{x}{n}\right)^n &\leadsto & (\mathrm{ tipo } \quad 1^\infty) \\
+\lim_{x\rightarrow 16} \left(\frac{x-16}{\sqrt{x}-4}\right)  &\leadsto & (\mathrm{ tipo } \quad 0/0)
+\end{eqnarray*}
+
+\end{ejer}  \newpage
+
+\subsection{Derivadas como límites}
+
+Las derivadas se pueden calcular con límites. Para calcular la derivada de una función $f$ en un punto $a$ debemos efectuar el límite:
+\[
+\lim_{h\rightarrow 0} \frac{f(a+h)-f(a)}{h}
+\]
+
+
+\begin{ejer}
+
+Calcula, utilizando límites, la derivada del coseno.
+
+\end{ejer}  \newpage
+
+\subsection{Continuidad}
+
+
+Para que una función sea continua, al menos, \textbf{deben existir los límites laterales y coincidir}. Si el valor de la función coincide con estos valores, la función es continua. Si el valor de la función no coincide con los límites entonces, redefiniendo la función, podemos hacerla continua. Se dice en este caso que la discontinuidad es evitable.
+
+\begin{ejer}
+
+Comprueba la continuidad en $x=0$ de las funciones:
+$$
+f(x) = \frac{1}{x} \qquad \qquad g(x)=(2+x)^\frac{1}{x} 
+$$
+
+\end{ejer}  \newpage
+
+\subsection{Asíntotas}
+
+ Dada una función $f(x)$, decimos que $y=a$ es una \textbf{asíntota horizontal} (por la derecha) si $\lim_{x\rightarrow \infty}f(x)=a$. Una recta $x=a$ es una \textbf{asíntota vertical} si alguno de los límites laterales $\lim_{x\rightarrow a} f(x)$ es infinito. Finalmente, una recta $y=mx+n$ es una \textbf{asíntota oblicua} si $\lim_{x\rightarrow \infty}(f(x)-(mx+n))=0$. En todos los casos, la gráfica de la función y la de la asíntota se acercan entre si.
+
+\begin{ejer}
+
+Calcula las asíntotas  y dibuja la función.
+$$
+\frac{2x^2-6x+3}{x-4}
+$$
+
+
+\end{ejer}  \newpage
+
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Derivadas}
+
+
+\end{capitulo}
+
+\subsection{Cálculo de derivadas}
+
+Para derivar se utiliza el comando \com{D[f,x]}. Debemos escribir la función y como segundo argumento la variable. \textbf{Si la función tiene varias variables calcula las derivadas parciales}.
+
+También se puede definir una nueva función y \textbf{utilizar la comilla simple}  para calcular la derivada. Este método sirve únicamente para funciones con una sola variable.
+
+Es importante que la variable que empleemos no tenga ningún valor asignado. Si lo tiene lo eliminamos con \com{Clear[var]}.
+
+\begin{ejer}
+
+Calcula la derivada de las funciones:
+$$
+a)\,3x^2+8x\qquad  b)\,4y^5-6y^3 \qquad c)\,\cos(y\cdot x^2)\qquad d)\, x^n
+$$
+
+Grafica alguna de las derivadas anteriores, utilizando el comando \com{Evaluate[expr]} si es necesario.
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{D, Evaluate, Clear.}
+
+\end{funciones}
+
+\newpage
+
+
+\subsection{Derivadas de orden superior}
+
+Para realizar derivadas de orden superior debemos escribir una lista, donde especificamos la variable y el orden de derivación. Se puede derivar de este modo sobre varias variables. También podemos escribir repetidamente la variable sobre la que queremos hacer la derivada de orden superior a 1.
+
+Con la función \com{HoldForm[expr]} podemos ver en notación matemática lo que hemos tecleado, pero no le ejecuta.
+
+\begin{ejer}
+
+Calcula las siguientes derivadas:
+$$
+a)\, \frac{\partial^5}{\partial x^5} \sin(6x) \qquad  b)\, \frac{\partial^5}{\partial x^2 \partial y^3} \sin(4x+6y)
+$$
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{HoldForm.}
+
+\end{funciones}
+
+
+
+\newpage
+
+\subsection{Derivadas simbólicas}
+
+Mathematica puede calcular derivadas simbólicas. Si trabajamos con funciones que no tienen ninguna expresión asignada y operamos con ellas, Mathematica nos calcula la derivada aplicando las reglas de derivación. 
+
+\begin{ejer}
+
+Calcular la derivada de un producto y de una división de funciones.
+
+\end{ejer}  \newpage
+
+
+\subsection{Cálculo de tangentes a curvas}
+
+La primera aplicación de las derivadas, y su origen histórico, está en el cálculo de tangentes a curvas. \textbf{Para calcular la tangente a una curva en un punto, debemos conocer la derivada de la función en dicho punto}. Esto nos da la pendiente de la recta y como conocemos el punto, podemos establecer la ecuación de la recta.
+
+\begin{ejer}
+
+Calcula la tangente a $f(x)=x^2+3x$ en el punto $x=2$ y dibuja ambas gráficas.
+
+\end{ejer}  \newpage
+
+\subsection{Extremos y puntos de inflexión}
+
+Otra de las aplicaciones de la derivada consiste en el cálculo de extremos, así como de los puntos de inflexión de curvas. Para ello debemos realizar la primera o la segunda derivada, igualar a cero y resolver la ecuación. Los extremos y los puntos de inflexión se encuentran entre las soluciones.
+
+
+
+\begin{ejer}
+
+Encuentra los posibles extremos y los puntos de inflexión de:
+$$
+ x^3-6x+7
+ $$
+ 
+ Dibuja conjuntamente la función y su derivada, para comprobar los extremos.
+
+\end{ejer} 
+
+
+ \newpage
+
+\subsection{Series de potencias}
+
+Toda función que sea suficientemente derivable en el entorno de un punto \textbf{admite un desarrollo en serie de Taylor}. Si la función es analítica, dicho polinomio converge (en un sentido apropiado) a la función, pero en todos los casos la gráfica de la función y del polinomio se \guillemotleft aproximan\guillemotright\  en el entorno del punto.
+
+Si queremos obtener el polinomio de Taylor empleamos la función \com{Series[f,\{$x,x_0,n$\}] }. En una lista debemos dar la variable, el punto y el orden del desarrollo.
+
+Para eliminar el resto se utiliza la función \com{Normal[serie]}. Ya con el resto eliminado se puede definir una función.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Calcula desarrollos de distintos ordenes de las funciones:
+$$
+a)\,\exp(x) \qquad  b)\,\cos(x^2) 
+$$
+
+\item Dibuja una función y su polinomio de Taylor en un entorno conveniente.
+
+
+\end{itemize}
+
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Series, Normal}
+
+
+\end{funciones}
+
+
+
+
+
+
+\newpage
+
+\begin{capitulo}
+
+\section{Integrales}
+
+
+\end{capitulo}
+
+\subsection{Integrales indefinidas}
+
+Mathematica puede calcular tanto integrales definidas como indefinidas en modo exacto con el comando \com{Integrate[f,x]}. Para calcular la primitiva, solamente tenemos que escribir la función y como segundo argumento la variable.
+
+Es conocido en matemáticas que no todas las integrales se pueden expresar  como una expresión con funciones elementales. Por ello Mathematica puede no saber hacer algunas integrales o dar algunos resultados \guillemotleft sorprendentes\guillemotright\ en algunas integrales.
+
+
+\begin{ejer}
+
+Calcula las siguientes integrales indefinidas, derivando para comprobar algún resultado:
+
+\begin{itemize}
+\item $\displaystyle a)\,\int x^5 \qquad b)\, \int 4y^3-5y\qquad c)\, \int x\cos(x)$
+
+\item $\displaystyle a)\, \int \exp(-x^2) \qquad b)\, \int \frac{\sin(x)}{x} $
+
+\end{itemize}
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Integrate.}
+
+\end{funciones}
+
+
+
+
+\newpage
+
+\subsection{Integrales definidas}
+
+Para las integrales definidas usamos \com{Integrate[f,\{$x,a,b$\}]}.
+
+A las integrales definidas les pasa lo mismo que a las definidas. En principio, si tenemos una primitiva, basta sustituir los extremos para calcular la integral definida. \textbf{El problema es que muchas funciones no tienen primitiva, expresable en forma cerrada}. Pero en este caso se puede recurrir a la \textbf{integración numérica}, empleando el  comando \com{NIntegrate[f,\{$x,a,b$\}]}.
+Para fijar el número de cifras significativas tenemos la opción \com{WorkingPrecision}.
+
+
+
+\begin{ejer}
+
+Calcula las integrales definidas:
+
+\begin{itemize}
+
+\item $\displaystyle a)\, \int_0^4 4x^3-4x \qquad b)\ \int_0^{\pi/2} \cos(x)$
+
+\item $\displaystyle a) \int_0^4 \frac{\sin(x)}{x} \qquad \int_0^\pi \sin(\sin(x))$
+
+\end{itemize}
+
+\end{ejer}
+
+\begin{funciones}
+
+\textbf{NIntegrate.}
+
+
+\end{funciones}
+
+
+
+  \newpage
+
+\subsection{Integrales impropias}
+
+Las integrales impropias se caracterizan por alguno de estos dos \guillemotleft problemas\guillemotright.
+
+\begin{itemize}
+
+\item Alguno de los límites es infinito.
+
+\item La función no está acotada en el intervalo de integración.
+
+
+\end{itemize}
+
+
+Mathematica también pueda calcular integrales impropias.  Si la integral no converge nos informa de ello en la solución. 
+
+\begin{ejer}
+
+Calcula las integrales impropias:
+$$
+ a)\,\int_1^\infty \frac{1}{x}\qquad b)\ \int_0^6\frac{1}{\sqrt{x}} \qquad c)\, \int_{-\infty}^\infty e^{-x^2} \qquad d)\, \int _{-2}^2 \frac{1}{x^2}
+ $$
+ 
+ \end{ejer}  \newpage
+ 
+ \subsection{Integrales de fracciones algebraicas}
+
+Las integrales de fracciones algebraicas se pueden realizar descomponiendo en fracciones simples  con el comando \com{Apart[frac]} e integrando cada término.
+Naturalmente  Mathematica también puede realizar la integral de manera directa.
+
+\begin{ejer}
+
+Calcula la integral de la fracción algebraica. Descompón en fracciones simples e integra:
+$$
+\int \frac{5x+3}{x^2+2x-3}
+$$
+
+\end{ejer}  \newpage
+
+\subsection{Integrales dependientes de parámetros}
+
+Si una función tiene varias variables e integramos con respecto a una de ellas, se dice que estamos haciendo \textbf{una integral con parámetros}. No se debe confundir este concepto con la integración en varias variables.  
+
+
+
+\begin{ejer}
+
+Calcula la integral:
+$$
+\int A \cdot \cos(wt) dt
+$$
+
+\end{ejer}  \newpage
+
+\subsection{Cálculo de áreas}
+
+La primera aplicación de las integrales es el \textbf{cálculo de áreas}. Si la función es siempre positiva, la integral definida es el área comprendida entre la gráfica de la función  y el eje $x$. \textbf{Si la función tiene partes positivas y negativas, tenemos que hacer varias integrales}, siendo los límites de integración los puntos de corte con el eje $x$. Siguiendo ideas similares se puede calcular el área entre dos curvas.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Calcular el área del seno en el intervalo $(0,\pi)$.
+
+\item Calcular el área entre las curvas $y=4x$ e $y=x^2$.
+
+\end{itemize}
+
+
+\end{ejer}  \newpage
+
+
+\subsection{Sumas de series numéricas}
+
+Sabemos que las integrales definidas son en realidad sumas a las que se les hace posteriormente un límite. La suma de series es ciertamente similar: se realiza una suma parcial y posteriormente se toma un límite. En realidad, si tomamos una medida adecuada sobre el conjunto de los naturales, \textbf{una serie no es más que un ejemplo de integral de Lebesgue}.
+
+
+Dada una sucesión $a_n$ podemos sumar algunos de sus términos o también sumar un número infinito de términos (la suma de la serie). El comando que empleamos es \com{Sum[a,\{i,imin,imax\}]}. En el último término podemos poner $\infty$ y sumar la serie entera. Si la serie es divergente, entonces Mathematica nos informa de ello.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Realizar las siguientes sumas:
+
+$$
+a)\, \sum_1^{100} n \qquad b)\,\sum_1^n i \qquad c)\,\sum_1^n i^2 \qquad d)\, \sum_1^\infty\frac{1}{n^2}
+$$
+
+
+\item Estudiar las sumas parciales y la convergencia de la serie armónica.
+
+
+\end{itemize}
+
+\enlargethispage{2cm}
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Sum.}
+
+
+\end{funciones}
+
+
+
+
+\newpage
+
+\begin{capitulo}
+
+\section{Vectores}
+
+\end{capitulo}
+
+
+\subsection{Operaciones con vectores}
+
+
+Para definir un vector \textbf{debemos escribir las coordenadas entre llaves  y separadas por comas}. Las coordenadas pueden ser numéricas o simbólicas. Los vectores pueden ser de cualquier dimensión.  Si realizamos operaciones entre vectores, estas se realizan \textbf{coordenada a coordenada}. En particular la suma, la resta y el producto por escalares son los asociados a la estructura de espacio vectorial.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Dado los vectores $u=(3,5,7)$ y $v=(2,-5,9)$ realiza combinaciones lineales con ellos.
+
+\item Realiza otras operaciones \guillemotleft no vectoriales\guillemotright.
+
+
+\end{itemize}
+
+\end{ejer}  
+
+\newpage
+
+
+\subsection{Dibujo de vectores}
+
+ La función \com{Arrow[\{p1,p2\}]} crea una flecha que comienza en el punto p1 y termina en el punto p2, pero no la dibuja. Si queremos dibujar los objetos  en dos dimensiones, utilizamos en comando \com{Graphics} y en tres dimensiones el comando \com{Graphics3D}. Puede ser interesante poner la opción \com{Axes} en True para poder ver los ejes.
+
+\begin{ejer}
+
+Representa el vector $u=(3,2)$ y $v=(2,3,1)$.
+
+
+\end{ejer}
+
+\begin{funciones}
+
+
+\textbf{Arrow, Graphics, Graphics3D.}
+
+
+\end{funciones}
+
+
+
+
+
+\newpage
+
+\subsection{Producto escalar y vectorial}
+
+La función \com{Norm[u]} calcula el módulo o norma del vector. La función \com{Dot[u,v]} calcula el producto escalar (también se puede realiza con un punto) y la función \com{Cross[u,v]} el producto vectorial. Con \com{VectorAngle[u,v]} podemos calcular el ángulo entre dos vectores.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Dados $u=(2,3,2)$ y $v=(1,-2,1)$  calcula $u\cdot v$.
+
+\item Comprueba que el producto escalar de $u$ consigo mismo es el cuadrado de la norma del vector.
+
+\item Calcula el ángulo que forman los vectores $u$ y $v$.
+
+
+\item Calcula el producto vectorial de los vectores.
+
+\item Comprueba que producto vectorial  es perpendicular a cada factor.
+
+\end{itemize}
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Norm, Dot, Cross, VectorAngle.}
+
+\end{funciones}
+
+
+
+\newpage
+
+\subsection{Proyección ortogonal}
+
+La proyección de un vector $u$ sobre $v$ es un vector proporcional a $v$, cuyo módulo es igual a la \guillemotleft sombra\guillemotright\ del vector $u$. La magnitud de dicha sombra se puede calcular con la fórmula $\frac{u.v}{v}$. Todo esto lo puede hacer Mathematica con el comando \com{Projection[u,v]}.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Calcula la proyección $p$ de $u$ sobre $v$.
+
+\item Comprueba que la proyección $p$ y $v$ son paralelos.
+
+\item Comprueba que $u-p$ es perpendicular a $v$.
+
+\end{itemize}
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Projection.}
+
+
+\end{funciones}
+
+
+
+
+\newpage
+
+\subsection{Ortogonalización de Gram-Schmidt}
+
+\textbf{Con proyecciones y normalizando se puede obtener la ortogonalización de cualquier conjunto de vectores}.  Dado un conjunto cualquiera de vectores, la ortogonalización consiste en un conjunto de vectores, que formen un conjunto ortonormal y que generen el mismo subespacio que los vectores de partida.
+
+
+Afortunadamente Mathematica tiene el comando \com{Orthogonalize[\{u,v,\dots\}]}. Los vectores deben ir dentro de una lista.
+  
+  
+\begin{ejer}
+  
+  Ortogonaliza el conjunto. Comprueba el resultado:
+   $$
+   u=(2,4,5,7) , v=(2,-5,8,9), w=(3,5,1,2)
+   $$
+  
+ \end{ejer} 
+ 
+ \begin{funciones}
+ 
+ \textbf{Orthogonalize.}
+ 
+ 
+ \end{funciones}
+ 
+ 
+ 
+  \newpage
+  
+  \subsection{Comprobaciones con cálculo simbólico}
+
+La comprobación de ciertas propiedades se puede realizar con vectores numéricos. Sin embargo
+el cálculo simbólico nos permite \guillemotleft probar\guillemotright\ propiedades, trabajando con letras, en vez de utilizar números. Se pueden realizar las operaciones y comprobar \guillemotleft a ojo\guillemotright\ que son iguales. \textbf{Para comprobar si dos objetos son iguales se coloca un doble signo igual}. Si la respuesta es \textbf{True}, ambos son iguales.
+
+\begin{ejer}
+
+Realiza las siguientes comprobaciones:
+
+\begin{itemize}
+
+\item El producto escalar es conmutativo.
+
+\item $u . u =|u|^2$.
+
+\item El producto vectorial es anticonmutativo.
+
+\item El producto vectorial es perpendicular a cada factor.
+
+
+\end{itemize}
+
+
+\end{ejer}  \newpage
+
+\subsection{Generación de sucesiones aritméticas}
+
+En programación se utilizan muchos los vectores de cualquier dimensión, en un sentido ligeramente distinto al matemático. La función \com{Range[n]} crea un vector formado por los números enteros del $1$ al $n$. Si añadimos otro número, se forma una secuencia numérica entre ambos números. Incluso admite un tercer argumento, que es el incremento de la secuencia.
+
+La función \com{Table[a[n],\{n,nmin,nmx\}]} crea un vector donde todos sus elementos corresponden al término general $a_n$. La $n$ es la variable (aunque puede ser cualquier otra) y los números indican el primer y el último término.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Crea un vector con números del 1 al 9.
+
+\item Crea un vector con números del 5 al 13.
+
+\item Crea un vector con números del 5 al 6 y con un incremento de 0.1.
+
+\item Crea un vector con los cubos de los 7 primeros números.
+
+\end{itemize}
+
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Range, Table.}
+
+
+\end{funciones}
+
+
+
+
+ \newpage
+
+\subsection{Indexación de vectores}
+
+Para acceder a las componentes de un vector \textbf{se utiliza el doble corchete} (con el doble punto y coma). También se puede utilizar la función \com{Part[v,i;;j]}. \textbf{Los números negativos en la indexación empieza a contar desde el final.}
+
+
+\begin{ejer}
+
+Dado el vector $v=(4,7,8,5,4,6,7,1)$:
+
+\begin{itemize}
+
+\item Mostrar la tercera componente y la segunda empezando por el final.
+
+\item Cambiar el valor de la segunda componente por $90$.
+
+\item Extraer partes del vector.
+
+\end{itemize}
+
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{Part.}
+
+\end{funciones}
+
+\newpage
+
+\begin{capitulo}
+
+\section{Matrices}
+
+\end{capitulo}
+
+\subsection{Introducción de matrices}
+
+Para introducir una matriz escribimos unas llaves y dentro, separados por comas, escribimos cada uno de los vectores fila. Como las filas son vectores  deben ir entre llaves también. En realidad \textbf{una matriz es una lista de listas}. Mathematica siempre nos presenta la salida de una matriz en la forma anterior. Si queremos ver los resultados con la presentación habitual debemos utilizar \com{MatrixForm[A]}. \textbf{En el caso de los vectores estos se representan como vectores columna.}
+
+
+
+\begin{ejer}
+
+Escribe las matrices:
+$$
+A=\begin{pmatrix}
+5 &7 & 8\\
+-3 & 4 & 2 \\
+4 & 7 & 9
+\end{pmatrix}
+\qquad 
+B=\begin{pmatrix}
+1 &2 & 3\\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}
+$$
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{MatrixForm.}
+
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Operaciones matriciales}
+
+Los operadores habituales realizan las \textbf{operaciones componentes a componente}. En el caso de la suma y la resta corresponden a la estructura de espacio vectorial del conjunto de matrices de un determinado orden. Sin embargo debemos tener en cuenta que \textbf{el asterisco no proporciona el producto matricial, ni el circunflejo la potencia matricial}. Para el \textbf{producto matricial se emplea el punto} (o también la función \com{Dot[m,n]}) y para la potencia \com{MatrixPower[A,n]}.
+
+
+
+
+\begin{ejer}
+
+Con las matrices anteriores realiza las operaciones:
+
+\begin{itemize}
+
+\item $a)\,A+B\qquad b)\, A-B\qquad c)\, A*B \qquad d)\, A.B$
+
+\item $a) B.A \qquad b)\,3A+5B \qquad c)\,A^5\qquad d)\, A^{-1}$
+
+
+\end{itemize}
+
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Dot, MatrixPower.}
+
+
+\end{funciones}
+
+
+ \newpage
+
+\subsection{Inversas, determinantes y transpuestas}
+
+La inversa de una matriz se puede calcular elevando a $-1$ la matriz o más cómodamente con el comando \com{Inverse[A]}. El determinante con \com{Det[A]}, la traza con \com{Tr[A]} y la transpuesta con \com{Transpose[A]}.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Calcula los comandos anteriores sobre las matrices $A$ y $B$.
+
+\item Comprueba la propiedad $u\cdot (v \times w)= \mathrm{det}(u,v,w)$.
+
+\end{itemize}
+
+\end{ejer}  
+
+\begin{funciones}
+
+
+\textbf{Inverse, Det, Tr, Transpose.}
+
+\end{funciones}
+
+
+\newpage
+
+\subsection{Rango y reducción por filas}
+
+El rango se calcula con \com{MatrixRank[A]}. Este es el número de filas linealmente independientes. Podemos también reducir por filas la matriz con la orden \com{RowReduce[A]} y contar el número de filas no nulas.
+
+\begin{ejer}
+
+Calcula el rango y la reducción por filas de las matrices anteriores.
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{MatrixRank, RowReduce.}
+
+
+\end{funciones}
+
+
+\newpage
+
+\subsection{Matrices y vectores}
+
+Si tenemos un vector, con las dimensiones adecuadas, \textbf{se puede multiplicar por la derecha o por la izquierda por una matriz}. El caso de multiplicar por ambos lados se obtiene, desde el punto de vista algebraico una forma cuadrática, y desde el punto de vista geométrico el producto escalar asociado a la matriz en cuestión.
+
+
+\begin{ejer}
+
+Dada la matriz $A$ y el vector $v=(3,6,-1)$ calcula:
+
+$$
+a)\,A\cdot v \qquad \qquad b)\,v \cdot A \qquad \qquad c)\,v \cdot A \cdot v
+$$
+
+\end{ejer}  \newpage
+
+\subsection{Construcción de matrices especiales}
+
+Mathematica tiene algunas funciones que nos permiten construir algunas matrices especiales:
+
+\begin{itemize}
+
+
+\item   \com{IdentityMatrix[n]} $\Rightarrow$   matriz identidad de orden $n$.
+
+
+ \item \com{DiagonalMatrix[v]}  $\Rightarrow$   matriz cuadrada con el vector $v$  en la diagonal.
+ 
+ 
+ \item  \com{ConstantArray[a,\{m,n\}]} $\Rightarrow$   matriz $m\times n$ constante.
+ 
+ \item \com{RandomInteger[a,\{m,n\}]} $\Rightarrow$   matriz $m\times n$ formada por nú\-meros aleatorios entre 1 y $a$.
+  
+  
+  \end{itemize}
+
+
+
+
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Construye la matriz identidad de orden $4$.
+
+\item Una matriz cuadrada con la diagonal $(4,7,9)$.
+
+\item Utilizar el segundo argumento de \com{DiagonalMatrix}.
+
+\item La matriz nula de tamaño $3\times 4$.
+
+\item Crea una matriz aleatoria.
+
+
+\end{itemize}
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{IdentityMatrix, DiagonalMatrix, ConstantArray, Ran\-dom\-Integer.}
+
+
+\end{funciones}
+
+
+ \newpage
+
+\subsection{Submatrices}
+
+Introduciremos con ejemplos, la manera de extraer submatrices de una matriz. Para ello debemos emplear el doble corchete o las funciones \com{Take[m]} o \com{Drop[m]}:
+
+\begin{itemize}
+
+\item  \com{A[[2,3]]} extrae el elemento $a_{23}$ de la matriz.
+
+\item  \com{A[[4]]} extrae la cuarta fila de la matriz. 
+
+
+\item \com{A[[All, 2]]} nos devuelve la segunda columna.
+
+\item \com{A[[\{1,2,4\},All]]} extrae las filas 1, 2 y 4.
+
+\item \com{Take[A,\{2,6\},\{3,5\}]} submatriz con las filas de la 2 a la 6 y con las columnas de la 3 a la 10
+
+\item \com{Drop[A,\{2,6\},\{3,5\}]} submatriz que se obtiene al borrar las filas de la 2 a la 6 y borrar las columnas de la 3 a 10.
+
+
+\end{itemize}
+
+
+\begin{ejer}
+
+Construye una matriz aleatoria y extrae diversas submatrices con los comandos anteriores.
+
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{Take, Drop.}
+
+\end{funciones}
+
+
+
+\newpage
+
+
+\subsection{Miscelanea de matrices}
+
+He aquí una recopilación de funciones aplicables a matrices:
+
+\begin{itemize}
+
+
+\item \com{\$Post:=If[MatrixQ[\#], MatrixForm[\#],\#]\&} $\Rightarrow$  todas las matrices se muestran en formato matemático.
+
+\item \com{Dimensions[m]} $\Rightarrow$ tamaño de la matriz.
+
+
+\item \com{HermitianMatrixQ[m]} $\Rightarrow$ True si  $A=A^*$.
+
+\item \com{OrthogonalMatrixQ[m]} $\Rightarrow$ True si $A\cdot A^t = \mathrm{Id}$.
+
+\item \com{PositiveDefiniteMatrixQ[m]} $\Rightarrow$ True si es definida positiva.
+
+\item \com{SymmetricMatrixQ[m]} $\Rightarrow$ si $A= A^t$.
+
+\item \com{Diagonal[m]} $\Rightarrow$ extrae la diagonal de $m$.
+
+
+
+
+\end{itemize}
+
+\newpage
+
+\begin{capitulo}
+
+\section{Sistemas de ecuaciones lineales}
+
+\end{capitulo}
+
+
+
+\subsection{El comando \com{Solve}}
+
+
+
+Ya hemos visto como el comando \com{Solve} puede resolver todo tipo de sistemas, en particular, puede resolver sistemas de ecuaciones lineales. Las ecuaciones, formando una lista, son el primer argumento. Una lista de las variables es el segundo argumento. También podemos emplear el comando \com{NSolve} si queremos aproximaciones numéricas.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Resuelve los sistemas con el comando \com{Solve}.
+
+$$
+SCD\qquad \left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+-3x& &+z & =&  -1
+\end{array}\right.
+$$
+
+$$
+SCI\qquad \left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+x&+y&+4z & =& 25
+\end{array}\right.
+$$
+
+$$
+SI\qquad \left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+x&+y&+4z & =& 90
+\end{array}\right.
+$$
+
+\end{itemize}
+
+\end{ejer}  \newpage
+
+\subsection{El comando \com{RowReduce}}
+
+
+Si escribimos la matriz ampliada del sistema y la reducimos por filas, nos queda \textbf{un sistema equivalente, donde las soluciones se pueden ver \guillemotleft a ojo \guillemotright}. También se puede ver da manera cómoda si el sistema es compatible indeterminado  (si tiene una fila llena de ceros) o si el sistema es incompatible (en una fila todos son ceros menos el último número).
+
+
+
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Resuelve los mismos sistemas con \com{RowReduce}
+
+\begin{small}
+$$
+\left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+-3x& &+z & =&  -1
+\end{array}\right.
+ \left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+x&+y&+4z & =& 25
+\end{array}\right.
+$$
+
+$$
+\left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+x&+y&+4z & =& 90
+\end{array}\right.
+$$
+
+\end{small}
+
+\item Resuelve un sistema generado al azar.
+
+\end{itemize}
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{RowReduce.}
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Multiplicar por la matriz inversa}
+
+Si tenemos un sistema con el \textbf{mismo número de ecuaciones que de incógnitas}, lo escribimos en forma matricial $A\cdot X = B$, donde la matriz $A$ es cuadrada. Si la matriz $A$ es invertible, multiplicando por la izquierda por la inversa de $A$, obtenemos la solución del sistema. En esencia este el conocido \textbf{método de Cramer}. Solamente se puede aplicar si la matriz del sistema es cuadrada y no singular, por lo que el sistema tiene una única solución.
+
+\begin{ejer}
+
+Resolver el sistema con la matriz inversa:
+$$
+\left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+-3x& &+z & =&  -1
+\end{array}\right.
+$$
+
+\end{ejer} 
+
+
+ \newpage
+
+\subsection{El comando \com{LinearSolve[A,B]}}
+
+Si $A$ es la matriz del sistema y $B$ el vector de términos independientes, con \com{LinearSolve[A,B]} obtenemos \textbf{una solución del sistema}, en el caso de que el sistema tenga solución. Si el sistema tiene infinitas soluciones, además de una solución particular, que es lo que nos aporta el comando \com{LinearSolve}, necesitamos resolver la ecuación homogenea. La ecuación homogenea se resuelve con el comando \com{NullSpace[m]}. Si el comando \com{NullSpace} nos devuelve un conjunto de vectores, la solución general es la suma de la particular y la solución de la homogenea.
+
+\begin{ejer}
+
+Resolver los mismos sistemas con los nuevos comandos:
+\begin{small}
+$$
+\left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+-3x& &+z & =&  -1
+\end{array}\right.
+ \left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+x&+y&+4z & =& 25
+\end{array}\right.
+$$
+
+$$
+\left\{
+\begin{array}{rlccc}
+x&+y&+4z & =& 25\\
+2x&+y&  &   =&  7 \\
+x&+y&+4z & =& 90
+\end{array}\right.
+$$
+
+\end{small}
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{LinearSolve, NullSpace.}
+
+
+\end{funciones}
+
+
+
+ \newpage
+
+
+
+
+
+
+\begin{capitulo}
+
+\section{Estadística descriptiva}
+
+\end{capitulo}
+
+\subsection{Los distintos tipos de media}
+
+Dado un conjunto de datos, en forma de vector, pretendemos dar \textbf{un número que resuma dicha información}. Con \com{Mean[v]} tenemos la \textbf{media aritmética}. El comando \com{Total[v]} nos permite sumar todos los elementos  y \com{Lenght[v]} nos dice cuantos  tiene.
+
+Además de la media aritmética, existen muchas otras: La \textbf{media armónica} (\com{HarmonicMean[v]}), la \textbf{media geométrica} (\com{Ge\-o\-metricMean[v]}), la \textbf{media contraarmónica}  (\com{Contraharmo\-nic\-Mean[v]}) y  la \textbf{media cuadrática} (\com{RootMeanSquare[v]}). \linebreak Sus formulas son:
+$$
+h)\,n : \left(\sum\frac{1}{x_i}\right)\qquad
+g)\,\left(\prod x_i\right)^{1/n} \qquad 
+c)\,\frac{\sum x_i^2}{\sum  x_i} \qquad 
+r)\,\sqrt{\frac{1}{n}\sum x_i^2}
+$$
+
+\begin{ejer}
+
+Calcula distintas medias con los datos
+$$
+21,22,21,23,22,21,23,23,21,21,21,24,22
+$$
+
+\end{ejer} 
+
+\enlargethispage{1 cm}
+
+\begin{funciones}
+
+\textbf{Mean, Total, Lenght, HarmonicMean, GeometricMean, ContraharmonicMean, RootMeanSquare.}
+
+\end{funciones}
+
+ \newpage
+
+
+\subsection{Mediana y moda}
+
+La \textbf{mediana} de un conjunto de datos es el dato que se encuentra en el punto medio, una vez ordenados los datos. Si el número de datos es par, entonces es la media de los dos datos centrales. Con \com{Sort[v}] podemos ordenar los datos del vector y extraer los valores con el doble corchete. También podemos emplear \com{Median[v]} que nos proporciona directamente la mediana. 
+
+El dato que más se repite (el más común) es la \textbf{moda}. En Mathematica tenemos el comando \com{Commonest[v]} para calcular la moda.
+
+\begin{ejer}
+
+Calcular la mediana de los datos anteriores. Ordenarlos y ver que coincide con el valor situado en el punto medio. Calcular la moda.
+
+\end{ejer}  
+
+\begin{funciones}
+
+
+\textbf{Sort, Median, Commonest.}
+
+
+\end{funciones}
+
+
+
+
+\newpage
+
+\subsection{Máximo, mínimo y cuantiles}
+
+El \textbf{máximo} de los datos se obtiene con \com{Max[v]} y el \textbf{mínimo} con \com{Min[v]}. Restando ambos podemos obtener el \textbf{rango}. Los tres \textbf{cuartiles} con \com{Quartiles[v]}. El \textbf{rango intercuartílico} (la resta del tercer y primer cuartil) con \com{InterquartileRange[v]}. Finalmente los \textbf{percentiles} se calculan con \com{Quantile[v,p]}, donde además de los datos, debemos facilitar el percentil, como un número entre 0 y 1.
+
+
+\begin{ejer}
+
+Calcula el máximo, el mínimo, el rango, los cuartiles, el rango intercuartílico y algún percentil de los datos anteriores.
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Max, Min, Quartiles, InterquartileRange, Quantile.}
+
+
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Varianza y desviación típica}
+
+La \textbf{varianza} (\com{Variance[v]})  de un conjunto de datos es:
+$$
+\frac{\sum(x_i - \bar x)^2}{n-1}
+$$
+La varianza que calcula Mathematica es la que esta dividida en el número de datos \textbf{menos 1}, que muchas veces se encuentra en la literatura con el nombre de cuasivarianza.
+
+La función (\com{StandardDeviation[v]}) nos da \textbf{desviación estandar} y se calcula aplicando la  raíz cuadrada a la varianza.
+
+La \textbf{desviación media} (\com{MeanDeviation[v]}) se calcula:
+$$
+\frac{1}{n}\sum |x_i-\bar x|
+$$
+
+\begin{ejer}
+
+Calcula los parámetros al conjunto de datos.
+
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{Variance, StandardDeviation, MeanDeviation.}
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Asimetría, kurtosis y momentos}
+
+La asimetría y la curtosis son una medida de la posible asimetría de los datos y del posible apuntamiento de la distribución. Los comandos son \com{Skewness[v]} y \com{Kurtosis[v]}.
+
+Para calcular el momento de orden $r$ tenemos el comando \com{Moment[v,r]} y para el momento central \com{CentralMoment[v,r]}.
+
+\begin{ejer}
+
+Calcula la asimetría,  la curtosis y algún momento de los datos.
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{Skewness, Kurtosis, Moment, CentralMoment.}
+
+\end{funciones}
+
+
+
+\newpage
+
+\subsection{Covarianza y correlación}
+
+Dados dos vectores de datos $u$ y $v$ de la misma dimensión, el comando \com{Correlation[u,v]} calcula la correlación entre ambas variables y \com{Covariance[u,v]} calcula la covarianza.
+
+
+\begin{ejer}
+
+Construir dos vectores aleatorios de la misma dimensión y calcular la correlación y la covarianza.
+
+
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{Correlation, Covariance.}
+
+\end{funciones}
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Gráficos estadísticos}
+
+\end{capitulo}
+
+\subsection{Tablas de frecuencias discretas}
+
+
+Si tenemos una distribución  discreta, la función \com{Tally[v]} nos permite hacer una tabla de frecuencias. El resultado es una matriz, cuya primera columna son los datos y la segunda columna son las frecuencias absolutas. El comando \com{Sort[v]} nos ordena la tabla. Con los dobles corchetes podemos extraer la segunda columna. Para dibujar el diagrama de barras utilizamos \com{BarChart[v]} y para el diagrama de sectores \com{PieChart[v]} y sus versiones tridimensionales.
+
+
+
+\begin{ejer}
+
+Genera un vector de 100 números aleatorios entre el 1 y el 6. Haz la tabla de frecuencias, ordénala y representa el diagrama de barras y el de sectores asociado.
+
+\end{ejer}
+
+\begin{funciones}
+
+\textbf{Tally, BarChart, PieChart, Barchar3D, PieChart3D.}
+
+
+\end{funciones}
+
+\newpage
+
+\subsection{Recuento de clases e histogramas}
+
+Si tenemos una distribución de datos continua,  debemos dividir los datos en clases y contar la frecuencia de cada clase. Ello se consigue con \com{BinCounts[list,\{a,b,inc\}]}.
+
+Con la orden \com{Histogram[list]} se crea un histograma de nuestros datos. El programa decide cuantas clases hacer. 
+
+El comando \com{SmoothHistogram[list]}  \guillemotleft suaviza\guillemotright\  el histograma.
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Genera 100 datos aleatorios entre 0 y 6. Realiza un recuento con distinto número de clases y realiza el histograma, también con distinto número de clases.
+
+
+\item Utilizando \com{RandomVariate} genera 1000 números de acuerdo a una distribución normal tipificada y dibuja el histograma.
+
+
+\end{itemize}
+
+\end{ejer}
+
+\begin{funciones}
+
+\textbf{BinCounts, Histogram, RandomVariate, NormalDistribution, SmoothHistogram.}
+
+\end{funciones}
+
+
+
+
+\newpage
+
+\subsection{Diagrama de  cajas y bigotes}
+
+Dado un conjunto de datos, podemos dibujar el diagrama de cajas y bigotes con el comando \com{BoxWhiskerChart[v]}. Si en vez de un vector, ponemos dos, nos dibuja dos diagramas. Los vectores deben ir en forma de lista.
+
+
+\begin{ejer}
+
+Genera 100 números aleatorios y dibuja el diagrama de cajas y bigotes. Genera 500 números aleatorios y dibuja ambos diagramas a la vez.
+
+
+\end{ejer}
+
+\begin{funciones}
+
+\textbf{BoxWhiskerChart.}
+
+\end{funciones}
+
+
+
+\newpage
+
+
+\subsection{Diagramas de dispersión}
+
+Dados dos conjuntos de datos del mismo tamaño $n$, lo podemos entender como un conjunto de $n$ puntos en el plano. El comando para dibujar puntos en el plano es \com{ListPlot[a]} donde el argumento es una lista formada por los puntos que queremos dibujar. Esta lista en realidad es una matriz de dos columnas.
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+
+\item Representar los puntos $(2,4)$, $(3,1)$ y $(2,2)$.
+
+\item Generar un conjunto de 100 puntos reales aleatorios en el intervalo $[0,1]$ y representar el diagrama de dispersión.
+
+
+
+\end{itemize}
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{ListPlot.}
+
+\end{funciones}
+
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Factorización de Matrices}
+
+\end{capitulo}
+
+
+
+
+
+
+\subsection{Descomposición LU}
+
+ \textbf{No siempre es posible hallar esta factorización. Permutando adecuadamente las filas, si es posible}. 
+
+El comando es \com{LUDecomposition[M]}.  La salida está formada por tres objetos. \textbf{El primero es una matriz donde se encuentran mezcladas las matrices $L$ y $U$}. El segundo es un vector de permutaciones. El tercer resultado solamente tiene interés cuando los cálculos se realizan en coma flotante. Debido a estas peculiaridades del comando, podemos pedirle la descomposición a \textbf{WolframAlpha}, escribiendo:
+ \begin{center}
+ 
+ \textbf{LU decomposition of [Matriz]}
+ 
+ \end{center}
+ 
+
+\enlargethispage{2cm}
+
+
+
+\begin{ejer}
+
+Realizar la descomposición LU de la matriz:
+
+$$
+\begin{pmatrix}
+1 & 2 &1\\
+4& -1&-3\\
+-2&1&1
+\end{pmatrix}
+$$
+
+\end{ejer} 
+
+
+
+ \begin{funciones}
+ 
+ \textbf{LUDecomposition.}
+ 
+ \end{funciones}
+ 
+  \newpage
+
+\subsection{Descomposición QR}
+
+La descomposición QR de una matriz $A$ consiste en encontrar dos matrices Q y R, tales que:
+
+\begin{itemize}
+
+ \item $A=Q\cdot R$ 
+
+
+\item  $Q$ es una matriz ortogonal ($Q\cdot Q^t=\mathrm{Id})$
+
+
+\item  $R$ es triangular superior.
+
+\end{itemize}
+
+El comando \com{QRDecomposition[M]} nos proporciona dos matrices $Q$ y $R$ que cumplen:
+$$
+\mathrm{\com{Transpose[Q]}}\cdot R = A
+$$
+
+Para saber si una matriz es ortogonal podemos realizar el producto de la matriz por su transpuesta o también utilizar el comando \com{OrthogonalMatrixQ[M]}.
+
+\begin{ejer}
+
+Realizar la descomposición QR de la matriz:
+
+$$
+\begin{pmatrix}
+1 & 2 &1\\
+4& -1&-3\\
+-2&1&1
+\end{pmatrix}
+$$
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{QRDecompostion, OrthogonalMatrixQ.}
+
+\end{funciones}
+
+
+\newpage
+
+
+
+\subsection{Descomposición de Choleski}
+
+Dada una matriz simétrica y definida positiva,  se puede encontrar una base ortonormal, donde la matriz se reduce a la identidad. A nivel matricial, ello implica la existencia de una matriz L que cumple:
+$$
+L\cdot L^t=A
+$$
+Dicha matriz L se puede elegir que sea triangular inferior. Esto es conocido como descomposición de Cholesky, que se puede obtener con \com{CholeskyDecomposition[M]}. El resultado de este comando es una matriz $L$ \textbf{triangular superior} que cumple:
+$$
+\mathrm{\com{Transpose[L]}}\cdot L = A
+$$
+
+
+
+ Para saber si una matriz es definida positiva utilizamos \com{PositiveDefiniteMatrixQ[M]}
+
+\begin{ejer}
+
+Realizar la descomposición de Choleski de la matriz:
+
+$$
+\begin{pmatrix}
+4 & 12 &-16\\
+12& 37&-43\\
+-16&-43&98
+\end{pmatrix}
+$$
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{CholeskyDecomposition, PositiveDefiniteMatrixQ.}
+
+\end{funciones}
+
+
+
+
+ \newpage
+
+
+\subsection{Descomposición de Schur}
+
+
+Dado un espacio vectorial complejo, y una matriz con coeficientes complejos $A$, es posible (debido a que  los complejos  son algebraicamente cerrados) encontrar una matriz $P$ tal que:
+$$
+P^*\cdot A\cdot P
+$$
+sea triangular.
+
+
+
+Para obtener la transpuesta conjugada empleamos \com{ConjugateTranspose[M]}. Para saber si una matriz es unitaria podemos multiplicar la matriz por su compleja conjugada o podemos emplear el comando \com{UnitaryMatrixQ[M]}.
+
+ El comando \com{SchurDecomposition[M]} nos proporciona  una matriz  unitaria $U$ y  una matriz triangular $T$ que cumplen:
+$$
+U\cdot T\cdot \mathrm{\com{ConjugateTranspose[U]} }= A
+$$
+
+\begin{ejer}
+
+Realiza la descomposición de Schur de la matriz:
+
+$$
+\begin{pmatrix}
+-149& -50 &-154\\
+537& 180&546\\
+-27&-9&-25
+\end{pmatrix}
+$$
+
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{ConjugateTranspose,  UnitaryMatrixQ, SchurDecomposition.}
+
+
+\end{funciones}
+
+
+\newpage
+
+\begin{capitulo}
+
+\section{Diagonalización de matrices}
+
+\end{capitulo}
+
+\subsection{Los autovectores y autovalores}
+
+Dada una matriz $A$ cuadrada, consideramos la matriz $A- \lambda \mathrm{Id}$.  Al calcular el determinante se obtiene un polinomio en $\lambda$. Las soluciones de dicho polinomio son los \textbf{autovalores} de $A$. Si $\lambda$ es un autovalor, la matriz $A- \lambda \mathrm{Id}$ es singular y tiene un núcleo no nulo. Los vectores del núcleo son los \textbf{autovectores} asociados al autovalor $\lambda$. Si conseguimos  tantos autovectores linealmente independientes com dimensión tenga la matriz, la matriz es diagonalizable.
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Encuentra los autovalores y autovectores de:
+$$A=
+\begin{pmatrix}
+1 & 0 &2\\
+3& 3&-3\\
+1&0&2
+\end{pmatrix}
+$$
+
+
+\item Comprueba que los autovectores efectivamente lo son.
+
+\end{itemize}
+
+\end{ejer}
+
+\newpage
+
+
+
+\subsection{Los comandos de diagonalización}
+
+
+
+Para saber si una matriz es diagonalizable tenemos el comando \com{DiagonalizableMatrixQ[M]}. Una vez que sabemos que es diagonalizable con \com{CharacteristicPolynomial[M,x]}  tenemos el polinomio característico. Las raíces de este polinomio son los valores propios, que podemos conocer con \com{Eigenvalues[M]}. Los vectores propios asociados se obtienen con \com{Eigenvectors[M]}. \textbf{Si llamamos $P$ a la matriz transpuesta que proporciona \com{EigenVectors}} entonces se cumple:
+$$
+\mathrm{Inverse[P]} \cdot M \cdot P = D
+$$
+siendo $D$ la matriz diagonal formada por los valores propios. Con \com{Eigensystem[M]} tenemos los valores propios y los vectores propios.
+
+
+\begin{ejer}
+Diagonaliza la matriz:
+\vspace{-0.5cm}
+
+$$A=
+\begin{pmatrix}
+1 & 0 &2\\
+3& 3&-3\\
+1&0&2
+\end{pmatrix}
+$$
+
+\end{ejer}  
+
+\enlargethispage{1cm}
+
+\begin{funciones}
+
+\textbf{DiagonalizableMatrixQ, CharacteristicPolynomial, Eigenvalues, Eigenvectors, Eigensystem.}
+
+\end{funciones}
+
+
+\newpage
+
+
+\subsection{La descomposición en valores singulares}
+
+Dada una matriz rectangular $A$, entonces $A\cdot A^t$ es una matriz cuadrada, simétrica y definida positiva y por lo tanto tiene todos los autovalores positivos. La raíz cuadrada de dichos autovalores son \textbf{los valores singulares de $A$}. Se pueden obtener con \com{SingularValueList[A]}. El comando \com{SingularValueDecomposition[A]} devuelve tres matrices $(U,V, W)$, donde $v$ es diagonal y tiene los valores singulares en la diagonal y además:
+$$
+A=U\cdot V\cdot W^t
+$$
+\textbf{La matrix $A$ debe estar escrita con números decimales}, pues en caso contrario devuelve todo en función de números algebraicos.
+
+\begin{ejer}
+
+Encuentra los valores singulares y la descomposición en valores singulares de la matriz:
+$$
+A=
+\begin{pmatrix}
+3. & 5 &6 & 5\\
+2& 7&4 & 5\\
+2&5&9 & 1
+\end{pmatrix}
+$$
+
+
+
+\end{ejer}
+
+\begin{funciones}
+
+\textbf{SingularValueList, SingularValueDecomposition.}
+
+\end{funciones}
+
+
+
+
+\newpage
+
+
+\subsection{La forma de Jordan}
+
+Si la matriz no es diagonalizable, lo más que podemos hacer con la matriz es reducirla a la \textbf{forma normal de Jordan} (también se llama \textbf{forma canónica} de la matriz). \textbf{Si la matriz es diagonalizable la forma normal de Jordan es la matriz diagonal}. 
+
+El comando  \com{JordanDecomposition[A]} realiza la descomposición. El resultado de este comando son dos  matrices. La primera es la matriz $P$  de cambio de base
+y el segundo $J$ es la forma de Jordan de la matriz. Todas las matrices que hemos calculado están ligadas por la expresión.
+$$
+A=P\cdot J \cdot P^{-1}
+$$
+
+
+
+\begin{ejer}
+
+Realiza la descomposición de Jordan de las matrices:
+
+$$
+A=
+\begin{pmatrix}
+1 & 0 &2\\
+3& 3&-3\\
+1&0&2
+\end{pmatrix}
+\qquad 
+B=
+\begin{pmatrix}
+3 & 0 & 0\\
+0 & 4 & -1\\
+0 & 1 & 2
+\end{pmatrix}
+$$
+
+
+
+
+\end{ejer}
+
+\begin{funciones}
+
+\textbf{JordanDecomposition.}
+
+
+\end{funciones}
+
+
+\newpage
+
+
+
+
+\begin{capitulo}
+
+\section{Cálculo vectorial}
+
+\end{capitulo}
+
+
+\subsection{Dibujo de campos vectoriales}
+
+Una función $V: \mathbb{R}^n \rightarrow \mathbb{R}^n$ \textbf{se puede entender como un conjunto de $n$ funciones  de $n$ variables}. Sin embargo también podemos pensarlo de otro modo: dado un punto $a \in \mathbb{R}^n$, $f(a)$ es un elemento de $\mathbb{R}^n$ y por lo tanto es un vector. \textbf{Si dibujamos dicho vector $f(a)$, \guillemotleft naciendo\guillemotright\ en el punto $a$, tenemos un campo vectorial: en cada punto de $\mathbb{R}^n$ tenemos un vector dibujado}. Para dibujar estos campos vectoriales se emplea el comando
+\begin{center}
+ \com{VectorPlot[campo, \{x,xmin,xmax\},\{y,ymin,ymax\}}]
+ \end{center}
+  y el análogo en tres dimensiones \com{VectorPlot3D}
+
+\begin{ejer}
+
+Dibuja el campo vectorial bidimensional $V=yi-xj$ y el campo tridimensional $V=(2xy,4x,5zy)$.
+
+\end{ejer}
+
+
+\begin{funciones}
+
+
+\textbf{VectorPlot, VectorPlot3D.}
+
+
+\end{funciones}
+
+
+\newpage
+
+\subsection{Gradiente, laplaciano y hessiano}
+
+Dada una función $f:\mathbb{R}^n \rightarrow \mathbb{R}$, diversas combinaciones de derivadas parciales tienen sentido geométrico. El gradiente de una de esta funciones se calcula con \com{Grad[f,\{$x_1,\dots ,x_n$\}]} y el laplaciano con \com{Laplacian[f,\{$x_1,\dots ,x_n$\}]}. Si no indicamos nada en contra, \textbf{Mathematica supone que estamos utilizando coordenadas cartesianas}.
+
+Como el gradiente y la divergencia no son más que combinaciones de derivadas parciales, se pueden obtener con el operador \com{D}. El gradiente se calcula con (ojo a la doble llave):
+\begin{center}
+\com{D[f[x,y,z],\{\{x,y,z\}\}]}
+\end{center}
+
+El \textbf{hessiano} es la matriz de las derivadas segundas y no tiene comando específico en Mathematica. Lo podemos calcular con:
+
+\begin{center}
+\com{D[f[x,y,z],\{\{x,y,z\},2	\}]}
+\end{center}
+
+\begin{ejer}
+
+Calcula el gradiente,el laplaciano y el hessiano de una función general y de:
+$$
+f=x^2 +y^2+z^2 \qquad\qquad g=xyz^6 +3(x+y)z^2
+$$
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Grad, Laplacian.}
+
+
+\end{funciones}
+
+
+ \newpage
+
+\subsection{Divergencia, rotacional y jacobiano}
+
+Los campos vectoriales en $\mathbb{R}^n$, una vez fijadas unas coordenadas, se pueden entender como funciones vectoriales de varias variables. Para definir una función vectorial creamos una lista (entre llaves) con cada una de las funciones coordenadas. La divergencia se calcula con \com{Div[\{$f_1,\dots,f_n$\},\{$x_1,\dots ,x_n$\}]} y el rotacional con \com{Curl[\{$f_1,\dots,f_n$\},\{$x_1,\dots ,x_n$\}]}
+
+El \textbf{jacobiano} no tiene comando asignado en Mathematica, pero lo calculamos con:
+
+\begin{center}
+\com{D[V[x,y,z],\{\{x,y,z\}\}]}
+\end{center}
+
+\begin{ejer}
+
+Calcula la divergencia,el rotacional  y el jacobiano del campo:
+$$
+V=\{3(x+y)z,5xyz^3,8x^2 +3z-7y\}
+$$
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Div, Curl.}
+
+
+\end{funciones}
+
+ \newpage
+
+\subsection{Identidades vectoriales}
+
+En el cálculo vectorial existen muchas identidades que nos permiten realizar los cálculos de manera más sencilla. Con Mathematica podemos comprobar con ejemplos la veracidad de dichas fórmulas. Además de eso, y gracias al cálculo simbólico, se pueden \guillemotleft demostrar\guillemotright\  estas identidades.
+
+
+\begin{ejer}
+
+Comprueba las siguientes identidades vectoriales:
+
+\begin{itemize}
+
+\item $\mathrm{rot}(\mathrm{grad}(f))=0$
+
+\item $\mathrm{div}(\mathrm{grad}(f))=\mathrm{lap}(f)$
+
+\item $\mathrm{div}(\mathrm{rot}(V))=0$
+
+\end{itemize}
+
+\end{ejer}
+
+
+  \newpage
+
+\subsection{Otros sistemas de coordenadas}
+
+Además de en coordenadas cartesianas, Mathematica realiza cálculos  en \textbf{distintos sistemas de coordenadas}. Las más típicas son las esféricas y las cilíndricas (o las polares en dimensión 2). Para decirle a Mathematica que realice los cálculos en estas coordenadas debemos especificar \com{``Spherical''} y  \com{``Cylindrical''}, \com{`Polar''} como un argumento extra (es necesario escribir las comillas). Las variables pueden tener cualquier nombre, pero si queremos seguir la notación matemáticas podemos utilizar la tecla ``Esc''.
+
+
+
+
+\begin{ejer}
+
+Calcula en coordenadas esféricas el gradiente de:
+\[
+r\cos(\theta)\sin(\phi)
+\]
+
+\end{ejer} 
+
+\begin{funciones}
+
+\textbf{Spherical, Cylindrical, Polar.}
+
+\end{funciones}
+
+
+
+ \newpage
+
+
+
+
+
+\newpage
+
+\begin{capitulo}
+
+\section{Transformada de Laplace}
+
+\end{capitulo}
+
+
+\subsection{Definición}
+
+La transformada de Laplace convierte una función $f(t)$ en la variable $t$, en una función $F(s)$ en la variable $s$:
+\[
+F(s)=\mathscr{L}(f(t)) (s)= \int_0^\infty  f(t) e^{-st} \mathrm{dt}
+\]
+Al estar definida mediante una integral impropia se imponen ciertas condiciones para asegurar la convergencia: 
+
+\begin{itemize}
+
+\item  \textbf{$f$ debe estar definida para todos los valores positivos}. Los valores de $f$ en la parte negativa del eje no se consideran en la integral.
+
+\item \textbf{Normalmente debe ocurrir que $s>a$ para que la integral sea convergente}, puesto que para número negativos $\exp(-st)$ es una función con un gran crecimiento y se tienen serias posibilidades de no convergencia.
+
+\end{itemize}
+
+
+
+\begin{ejer}
+
+Calcula la transformada de Laplace del seno utilizando la definición:
+\[
+\mathscr{L}(f(t)) (s)= \int_0^\infty  f(t) e^{-st} \mathrm{dt}
+\]
+
+\end{ejer}  
+
+
+
+\newpage
+
+\subsection{El comando \com{LaplaceTransform}.}
+
+Se utiliza \com{LaplaceTransform[f,t,s]} para efectuar la transformada, donde $f$ es la función en la primera variable, $t$ es la variable de la función sin transformar y $s$ es el variable de la función transformada.
+
+En el manejo habitual de la transformada de Laplace se parte de una serie de transformadas de funciones elementales que suelen venir tabuladas. 
+
+
+\begin{ejer}
+
+
+
+\begin{itemize}
+
+\item Calcula las siguientes transformadas de Laplace:
+\[
+a)\,\mathscr{L}(\sin(\omega t)) \qquad  b)\,\mathscr{L}(\cos(\omega t)) \qquad c)\,\mathscr{L}(e^{\omega t})
+\]
+
+\item Calcula la transformada de la delta de Dirac.
+
+\end{itemize}
+
+\end{ejer}  
+
+\begin{funciones}
+
+\textbf{LaplaceTransform, DiracDelta.}
+
+
+\end{funciones}
+
+
+\newpage
+
+
+\subsection{La transformada como aplicación lineal}
+
+
+La transformada de Laplace es una aplicación lineal. Para conocer la transformada de un polinomio basta con conocer las transformadas de las potencias.
+
+\begin{ejer}
+
+ Calcula transformadas  de constantes, potencias y de polinomios.
+
+\end{ejer} 
+
+
+
+ \newpage
+
+
+
+\subsection{Algunas propiedades}
+
+
+
+
+Las propiedades  de la transformada de Laplace son  la que hacen tan útil a este mecanismo. Como muestra enumeramos algunas:
+
+\begin{itemize}
+
+\item  $\displaystyle \mathscr{L}(f+ g)= F(s)+G(s)$
+
+\item $\displaystyle \mathscr{L}(f') = s\cdot F(s)-f(0)$
+
+\item $\displaystyle \mathscr{L}\left(\int_o^t f(u)du\right)= \frac{1}{s} F(s)$
+
+\item $\displaystyle \mathscr{L}(e^{at}\cdot f)= F(s-a)$
+
+
+
+
+\end{itemize}
+
+\begin{ejer}
+
+\begin{itemize}
+
+
+\item Comprueba las propiedades anteriores.
+
+
+\item Calcula, paso a paso, la transformada de Laplace de:
+$$
+t^3e^{-5t}\cos(2t)
+$$
+
+\end{itemize}
+
+\end{ejer} 
+
+
+
+ \newpage
+
+
+\subsection{La transformada inversa}
+
+Bajo ciertas condiciones, la transformada de Laplace se puede invertir y dada una función $F(s)$ se puede encontrar la función $f(t)$. Para ello se utiliza \com{InverseLaplaceTransform[F,s,t]}
+
+
+
+\begin{ejer}
+
+ Calcula la siguiente transformada inversa de Laplace:
+$$
+\mathscr{L}^{-1}\left(\frac{1}{(s+1)^2 (s+2)}\right)
+$$
+
+\end{ejer} 
+
+
+\begin{funciones}
+
+\textbf{InverseLaplaceTransform.}
+
+\end{funciones}
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{capitulo}
+
+\section{Ecuaciones diferenciales}
+
+
+\end{capitulo}
+
+
+\subsection{Solución de una ecuación diferencial}
+
+\textbf{Una ecuación diferencial es una igualdad donde aparece, al menos, una derivada de una función}. En general la función desconocida se denota por la letra $y$. Sus derivadas, o bien por $y', y'',\dots$ o bien por $\frac{dy}{dx},\frac{d^2y}{dx^2}, \dots$, donde la $x$ es la variable de la que depende la función. \textbf{Una solución de una ecuación diferencial es cualquier función que al sustituirla en la ecuación nos proporcione una identidad}. En general las ecuaciones diferenciales tienen infinitas soluciones.
+
+\begin{ejer}
+
+Comprobar que las siguientes funciones son solución de las ecuaciones diferenciales escritas a su derecha.
+\begin{eqnarray*}
+\exp(x) &\hookrightarrow& y'=y\\
+7\exp(x) &\hookrightarrow& y'=y\\
+ \cos(x) &\hookrightarrow& y''=-y\\
+ \sin(x) &\hookrightarrow& y''=-y\\
+ a\sin(x)+b\cos(x)  &\hookrightarrow& y''=-y
+\end{eqnarray*}
+
+
+
+
+
+\end{ejer}
+
+
+\newpage
+
+
+\subsection{Ecuaciones de primer orden}
+
+El comando para obtener la solución general es:
+\begin{center}
+\com{DSolve[ecuación, y,x]}
+\end{center}
+
+\begin{itemize}
+
+\item \textbf{Es importante escribir la dependencia de la variable en todas las apariciones de la función y sus derivadas.}
+
+\item \textbf{Para extraer la solución se pueden utilizar  los corchetes dobles}.
+
+\item \textbf{El resultado es una \guillemotleft función pura\guillemotright.} 
+
+\item \textbf{Las infinitas soluciones dependen de una constante, que se denota \com{C[1]}.}
+
+
+\end{itemize}
+
+
+
+\begin{ejer}
+
+Resuelve y comprueba la solución:
+
+$$
+a) \,\frac{dy}{dx}=y   \qquad \qquad b) \,y'= 2x+3y
+$$
+
+
+\end{ejer}
+
+\enlargethispage{1 cm}
+
+\begin{funciones}
+
+\textbf{DSolve}
+
+\end{funciones}
+
+\newpage
+
+
+\subsection{Ecuaciones de mayor orden}
+
+En las ecuaciones de orden mayor que uno, aparecen tantas constantes como orden tenga la ecuación. Las derivadas sucesivas se van indicando con más apóstrofes.
+
+La mayor parte de las ecuaciones diferenciales no las puede resolver Mathematica de modo exacto y en muchas de ellas aparecen las llamadas \textbf{funciones especiales}.
+
+
+\begin{ejer}
+
+Resuelve y comprueba alguna solución:
+
+$$
+a)\,y''= y    \qquad \qquad b)\, x^2\cdot y''+x\cdot y'+(x^2-9)\cdot y=0
+$$
+
+
+\end{ejer}
+
+
+\newpage
+
+\subsection{Ecuaciones con valor inicial}
+
+Dada una ecuación diferencial de primer grado, si fijamos el valor en un punto de la solución, estamos eligiendo una de las infinitas soluciones de la ecuación general. \textbf{El teorema de unicidad de ecuaciones diferenciales, nos dice que, bajo supuestos muy generales, dicha solución es única}. Para dar la condición inicial la escribimos junto con la ecuación diferencial en forma de lista.
+
+\begin{center}
+\com{DSolve[\{ecuación, condición\}, y,x]}
+\end{center}
+Naturalmente si la ecuación es de grado mayor debemos dar tantas condiciones como orden tenga la ecuación.
+
+
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Resuelve y dibuja $y'=y $ con $y(0)=3$.
+
+
+\item Resuelve y dibuja $y''=y$ con las condiciones $y(3)=4$ e $y'(0)=2$.
+
+\end{itemize}
+
+\end{ejer}
+
+
+\newpage
+
+
+
+
+\subsection{El campo vectorial asociado a la ecuación}
+
+Dada una ecuación diferencial $y'=f(x,y)$ el campo vectorial $\{1,f(x,y)\}$ es el campo asociado la ecuación diferencial. Para dibujar el campo utilizamos:
+\begin{center}
+\com{VectorPlot[campo,\{x,xmin,xmax\},\{y,ymin,ymax\}]}
+
+\end{center}
+
+Las curvas que son soluciones de la ecuación se adaptan al campo en el siguiente sentido: el vector velocidad de la curva en el punto es también el vector del campo vectorial.
+
+\begin{ejer}
+
+Dada la ecuación diferencial $y'=y$, dibuja el campo vectorial y una solución de la ecuación diferencial, todo en la misma gráfica.
+
+
+
+\end{ejer}
+
+
+\begin{funciones}
+
+\textbf{VectorPlot.}
+
+\end{funciones}
+
+
+\newpage
+
+
+\subsection{Sistemas de ecuaciones diferenciales}
+
+En un sistema, existen varias funciones desconocidas, todas dependiendo de la misma variable. También existen varias ecuaciones y se pueden establecer condiciones iniciales para varias funciones. La solución general dependerá de varios parámetros y en cuanto vayamos añadiendo condiciones iniciales, se irán reduciendo las constantes de integración.
+
+
+\begin{ejer}
+
+\begin{itemize}
+
+\item Resuelve el siguiente sistema de ecuaciones diferenciales:
+\[\displaystyle
+\begin{cases}
+\displaystyle \frac{dx}{dt}  =  t\\
+ & \\
+\displaystyle \frac{dy}{dt}  =  t^2
+\end{cases}
+\]
+
+\item Añadir la condiciones iniciales $x(0)=1$ e $y(2)=3$.
+
+\end{itemize}
+
+
+\end{ejer}
+
+
+
+\newpage
+
+\subsection{Resolución numérica}
+
+
+\textbf{Normalmente una ecuación diferencial no admite una solución explícita en términos de funciones, ya sean elementales o especiales}. En este caso debemos recurrir a la integración numérica.. El comando para hacer esta aproximación es:
+
+\begin{center}
+\com{NDSolve[ecuación, y,\{x,xmin,xmax\}]}
+\end{center}
+
+\textbf{Es imprescindible dar las condiciones iniciales, de modo que la solución sea única.}
+La solución será una función definida únicamente en el dominio $(xmin,xmax)$. Para extraer la solución volvemos a emplear el doble corchete. Con la solución no podemos hacer muchas cosas, puesto que no tiene una fórmula explícita. Podemos, eso si, \textbf{calcular valores de la función en puntos del dominio y graficar la función, también en puntos del dominio}.
+
+\begin{ejer}
+
+Resuelve de modo  aproximado la ecuación $y'+y=0$ con la condición inicial $y(0)=1$, en el intervalo $(0,2\pi)$. Grafica la solución.
+
+\end{ejer}
+
+
+
+\begin{funciones}
+
+\textbf{NDSolve.}
+
+
+\end{funciones}
+
+
+\newpage
+
+
+\begin{capitulo}
+
+\section{Expresiones trigonométricas}
+
+\end{capitulo}
+
+
+\subsection{Simplificaciones trigonométricas}
+
+El comando \com{Simplify}  puede simplificar algunas expresiones trigonométricas. Debemos decir  que este problema no puede ser bien resuelto por Mathematica pues no existe un concepto matemático de simplificación en el conjunto de expresiones algebraicas. De entre todas las expresiones trigonométricas equivalentes, no podemos decir cual es la mas simple, al contrario de lo que sucede por ejemplo con las fracciones. En este caso la más sencilla (o irreducible) es la que tiene números mas pequeños.
+
+\begin{ejer}
+
+Simplifica las siguientes expresiones:
+
+\begin{itemize}
+
+\item $\sin^2(x)+\cos^2(x)\qquad $  
+
+\item $\displaystyle\frac{\sin(x)}{\cos(x)}\qquad $ 
+
+
+\item $\displaystyle \frac{\sin^2(x)}{1-\cos^2(x)}\qquad $
+
+\item $\displaystyle \frac{\sin^2(x)}{1-\sin^2(x)}\qquad $
+
+\end{itemize}
+
+
+
+
+\end{ejer} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
